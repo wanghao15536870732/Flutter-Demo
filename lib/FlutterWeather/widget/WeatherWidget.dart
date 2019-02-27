@@ -287,7 +287,7 @@ class WeatherState extends State<WeatherWidget>{
               child: Text(
                 data.substring(5,7) + '月' + data.substring(8,10) + '日',
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 18.0,
                   color: Color(0xFF333333),
                 ),
               ),
@@ -303,7 +303,7 @@ class WeatherState extends State<WeatherWidget>{
               child: Text(
                 weather,
                 style: TextStyle(
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   color: Color(0xFF333333),
                 ),
               ),
@@ -313,7 +313,7 @@ class WeatherState extends State<WeatherWidget>{
               child: Text(
                 temp,
                 style: TextStyle(
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   color: Color(0xFF333333),
                 ),
               ),
@@ -323,7 +323,7 @@ class WeatherState extends State<WeatherWidget>{
               child: Text(
                 windair,
                 style: TextStyle(
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   color: Color(0xFF333333),
                 ),
               ),
@@ -333,7 +333,7 @@ class WeatherState extends State<WeatherWidget>{
               child: Text(
                 windsc,
                 style: TextStyle(
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   color: Color(0xFF333333),
                 ),
               ),

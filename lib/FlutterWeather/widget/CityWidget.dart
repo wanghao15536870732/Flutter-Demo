@@ -3,10 +3,13 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lake/FlutterWeather/data/CityData.dart';
+import 'package:flutter_lake/FlutterWeather/weather.dart';
 import 'package:flutter_lake/FlutterWeather/widget/WeatherWidget.dart';
 import 'package:http/http.dart' as http;
 
 class CityWidget extends StatefulWidget{
+
+  static final citysaved = new Set<CityData>();
 
   @override
   State<StatefulWidget> createState() {
@@ -17,7 +20,7 @@ class CityWidget extends StatefulWidget{
 
 class CityState extends State<CityWidget>{
 
-  final _saved = new Set<CityData>();
+  Set _saved = new Set<CityData>();
   //列表显示
   List<CityData> cityList = new List<CityData>();
 
@@ -69,7 +72,7 @@ class CityState extends State<CityWidget>{
         },
       ),
       trailing: new Icon(
-        alreadySaved ? Icons.add_circle : Icons.add_circle_outline,
+        alreadySaved ? Icons.favorite : Icons.favorite_border,
         color: alreadySaved ? Colors.red : null,
       ),
       onTap: (){
@@ -84,6 +87,10 @@ class CityState extends State<CityWidget>{
     );
   }
 
+  Set returnSave(){
+    return this._saved;
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -92,9 +99,5 @@ class CityState extends State<CityWidget>{
         return _buildRow(cityList[index], index);
       },
     );
-  }
-
-  Set returnSaved(){
-    return _saved;
   }
 }

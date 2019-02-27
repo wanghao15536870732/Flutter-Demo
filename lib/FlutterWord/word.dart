@@ -31,6 +31,9 @@ class RandomWords extends StatefulWidget{
  */
 class RandomWordState extends State<RandomWords>{
 
+  final searchController = TextEditingController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   //向RandomWordsState类中添加一个_suggestions列表以保存建议的单词对。
   //该变量以下划线"_"开头，在Dart语言中会强制其变成私有的
   final _suggestions = <WordPair>[];
@@ -172,8 +175,51 @@ class RandomWordState extends State<RandomWords>{
   //该方法通过将生成单词对的代码从MyApp移动到RandomWordsState来生成单词对。
   @override
   Widget build(BuildContext context) {
+
+    void _showCityTextField(){
+      _scaffoldKey.currentState.showBottomSheet<Null>((BuildContext context){
+        return new Container(
+          decoration: new BoxDecoration(
+              border: new Border(
+                  top: new BorderSide(color: Theme.of(context).dividerColor)
+              )
+          ),
+          child: new TextField(
+            controller: searchController,
+            textInputAction: TextInputAction.search,
+            onSubmitted: (String name){
+              searchController.clear();
+              _saved.add(WordPair(name, ""));
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => new WordWidget(name)),
+              );
+            },
+            maxLines: 1,
+            style: new TextStyle(fontSize: 16.0,color: Colors.grey),
+            decoration: InputDecoration(
+                hintText: '查询单词',
+                hintStyle: TextStyle(fontSize: 14.0,color: Colors.grey),
+                prefixIcon: new Icon(
+                  Icons.search,
+                  color: Colors.grey,
+                  size: 20.0,
+                )
+            ),
+          ),
+        );
+      });
+    }
+
     // TODO: implement build
     return new Scaffold(
+      key: _scaffoldKey,
+      resizeToAvoidBottomPadding: false, //false键盘弹起不重新布局 避免挤压布局
+      floatingActionButton: FloatingActionButton.extended(
+        tooltip: 'Show textfield',
+        icon: Icon(Icons.add),
+        label: new Text("单词"),
+        onPressed: _showCityTextField,
+      ),
       appBar: new AppBar(
         title: new Text('Start Word Generator'),
         actions: <Widget>[
@@ -190,5 +236,7 @@ class RandomWordState extends State<RandomWords>{
       body: _buildSuggestion(),
     );
   }
+
+
 }
 

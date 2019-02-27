@@ -128,6 +128,13 @@
             </list>
           </value>
         </entry>
+        <entry key="shared_preferences">
+          <value>
+            <list>
+              <option value="D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.4.3/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="sky_engine">
           <value>
             <list>
@@ -209,6 +216,7 @@
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path-1.6.2/lib" />
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-0.4.1/lib" />
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/quiver-2.0.1/lib" />
+      <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.4.3/lib" />
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/source_span-1.4.1/lib" />
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/stack_trace-1.9.3/lib" />
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/stream_channel-1.6.8/lib" />
