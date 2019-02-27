@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lake/FlutterWeather/data/DressingData.dart';
 import 'package:flutter_lake/FlutterWeather/data/WeatherData.dart';
-import 'package:flutter_lake/FlutterWeather/data/OneData.dart';
 import 'package:flutter_lake/FlutterWeather/data/WeekData.dart';
 import 'package:http/http.dart' as http;
 
@@ -27,8 +26,8 @@ class WeatherState extends State<WeatherWidget>{
   WeatherData weather = WeatherData.empty();
   //天气指数
   DressingData weatherLife = DressingData.empty();
-
-  //未来7天的天气
+  //未来7天天气
+  List<Widget> widgets = new List();
   WeekData weekData = WeekData.empty();
 
   WeatherState(String cityName){
@@ -39,14 +38,17 @@ class WeatherState extends State<WeatherWidget>{
   void _getWeather() async{
     WeatherData data = await _fetchWeather();
     DressingData dataLife = await _fetchWeatherLife();
-//    WeekData dataWeek = await _fetchWeekWeather();
+    WeekData dataWeek = await _fetchWeekWeather();
     setState((){
       weather = data;
       weatherLife = dataLife;
-//      weekData = dataWeek;
+      this.weekData = dataWeek;
     });
   }
 
+  /**
+   * 获取基本天气信息
+   */
   Future<WeatherData> _fetchWeather() async{
     final response = await http.get(
         'https://free-api.heweather.com/s6/weather/now?location='+
@@ -60,6 +62,9 @@ class WeatherState extends State<WeatherWidget>{
     }
   }
 
+  /**
+   * 获取穿衣指数，穿衣建议等等
+   */
   Future<DressingData> _fetchWeatherLife() async{
     final response = await http.get(
       'https://free-api.heweather.net/s6/weather/lifestyle?parameters&location=' +
@@ -73,81 +78,22 @@ class WeatherState extends State<WeatherWidget>{
     }
   }
 
-  Future<WeekData> _fetchWeekWeather() async{
+  Future<WeekData> _fetchWeekWeather() async {
     final response = await http.get(
-      'https://free-api.heweather.net/s6/weather/forecast?parameters&location=' +
-          cityName +
-          '&key=551f547c64b24816acfed8471215cd0e'
+        'https://free-api.heweather.net/s6/weather/forecast?parameters&location=' +
+            cityName +
+            '&key=551f547c64b24816acfed8471215cd0e'
     );
-
-    if(response.statusCode == 200){
-      WeekData weekData = WeekData.empty();
-      for(int i = 0;i < 3;i++){
-        OneData oneData = OneData.empty();
-        oneData = OneData.fromJson(json.decode(response.body) + '[\'HeWeather6\'][0][\'daily_forecast\'][' + i + ']');
-        weekData.OneData.add(oneData);
-      }
-      return weekData;
-    }else{
+    if (response.statusCode == 200) {
+      return WeekData.fromJson(json.decode(response.body));
+    } else {
       return WeekData.empty();
     }
   }
 
-//
-//  Widget buildFutureItem(String data,String weatherImg,String weather,String temp,String windair,String windsc){
-//    return Container(
-//      height: 160.0,
-//      width: 115.0,
-//      child: Column(
-//        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//        children: <Widget>[
-//          Text(
-//            data,
-//            style: TextStyle(
-//              fontSize: 20.0,
-//              color: Color(0xFF333333),
-//            ),
-//          ),
-//          Image.asset(
-//            weatherImg,
-//            width: 40.0,
-//            height: 40.0,
-//            fit: BoxFit.fill,
-//          ),
-//          Text(
-//            weather,
-//            style: TextStyle(
-//              fontSize: 18.0,
-//            ),
-//          ),
-//          Text(
-//            temp,
-//            style: TextStyle(
-//              fontSize: 18.0,
-//            ),
-//          ),
-//          Text(
-//            windair,
-//            style: TextStyle(
-//              fontSize: 18.0,
-//            ),
-//          ),
-//          Text(
-//            windsc,
-//            style: TextStyle(
-//              fontSize: 14.0,
-//              color: Colors.white,
-//            ),
-//          ),
-//        ],
-//      ),
-//    );
-//  }
 
   @override
   Widget build(BuildContext context) {
-
-    //OneData oneData = weekData.OneData[0];
 
     Widget heaferSection = Container(
       margin: const EdgeInsets.all(20.0),
@@ -228,11 +174,14 @@ class WeatherState extends State<WeatherWidget>{
     Row buildWeatherItem(String icon,String text){
       return Row(
         children: <Widget>[
-          Image.asset(
-            icon,
-            width: 30.0,
-            height: 30.0,
-            fit: BoxFit.cover,
+          new Container(
+            margin: EdgeInsets.only(right: 5.0),
+            child: Image.asset(
+              icon,
+              width: 20.0,
+              height: 20.0,
+              fit: BoxFit.cover,
+            ),
           ),
           new Text(
               text,
@@ -245,7 +194,7 @@ class WeatherState extends State<WeatherWidget>{
     }
 
     Widget itemSection = Container(
-      margin: EdgeInsets.only(top: 15.0),
+      margin: EdgeInsets.only(top: 15.0,bottom: 5.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -276,40 +225,43 @@ class WeatherState extends State<WeatherWidget>{
       ),
     );
 
-    Row buildDressItem(String icon,String text){
-      return Row(
-        children: <Widget>[
-          Image.asset(
-            icon,
-            width: 40.0,
-            height: 40.0,
-            fit: BoxFit.cover,
-          ),
-          new Column(
-            children: <Widget>[
-              new Text(
-                text,
-                softWrap: true,
-                maxLines: 2,
-                style: new TextStyle(
-                    fontSize: 16.0,
-                    color: Color(0xFF333333)
+    Widget buildDressItem(String icon,String text){
+      return new Container(
+        color: Color(0x3399CCFF),
+        margin: EdgeInsets.only(top: 10.0),
+        padding: EdgeInsets.only(left: 15.0,right: 15.0,top: 10.0,bottom: 10.0),
+        child: Row(
+          children: <Widget>[
+            Image.asset(
+              icon,
+              width: 30.0,
+              height: 30.0,
+              fit: BoxFit.fitWidth,
+            ),
+            Padding(padding: EdgeInsets.only(right: 10.0),),
+            new Column(
+              children: <Widget>[
+                Container(
+                  child: Text(text,
+                    style: new TextStyle(
+                        fontSize: 12.0,
+                        color: Color(0xFF333333),
+                    ),
+                  ),
+                  width: 320.0,
                 ),
-              ),
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       );
     }
-
 
     Widget dressSection = Container(
       margin: EdgeInsets.only(top: 15.0),
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          buildDressItem('images/weatherComf.png', weatherLife?.weatherComf ),
-          buildDressItem('images/weatherDrsg.png', weatherLife.weatherDrsg),
           buildDressItem('images/weatherComf.png', weatherLife.weatherDet),
           buildDressItem('images/weatherSug.png', weatherLife.weatherSug),
           buildDressItem('images/weatherFlu.png', weatherLife.weatherFlu),
@@ -322,6 +274,126 @@ class WeatherState extends State<WeatherWidget>{
       ),
     );
 
+    Widget buildFutureItem(String data, String weatherImg, String weather,
+        String temp, String windair, String windsc) {
+      return Container(
+        height: 260.0,
+        width: 115.0,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            new Container(
+              margin: EdgeInsets.only(bottom: 5.0),
+              child: Text(
+                data.substring(5,7) + '月' + data.substring(8,10) + '日',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Color(0xFF333333),
+                ),
+              ),
+            ),
+            Image.asset(
+              weatherImg,
+              width: 40.0,
+              height: 40.0,
+              fit: BoxFit.fill,
+            ),
+            new Container(
+              margin: EdgeInsets.only(top: 10.0),
+              child: Text(
+                weather,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Color(0xFF333333),
+                ),
+              ),
+            ),
+            new Container(
+              margin: EdgeInsets.only(top: 10.0),
+              child: Text(
+                temp,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Color(0xFF333333),
+                ),
+              ),
+            ),
+            new Container(
+              margin: EdgeInsets.only(top: 10.0),
+              child: Text(
+                windair,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Color(0xFF333333),
+                ),
+              ),
+            ),
+            new Container(
+              margin: EdgeInsets.only(top: 5.0),
+              child: Text(
+                windsc,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Color(0xFF333333),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget rebuildWeekWeather(){
+      for(int index = 0;index < weekData.data.length;index ++){
+        widgets.add(
+          buildFutureItem(
+            weekData.data[index].toString(),
+            'images/' + weekData.code[index].toString() + '.png',
+            weekData.weather[index].toString(),
+            weekData.ltempture[index].toString() + '℃ ' + '~' +
+                weekData.htempture[index].toString() + ' ℃',
+            weekData.winddir[index].toString(),
+            weekData.windsc[index].toString() + '级',
+          ),
+        );
+      }
+      if(widgets.length > 0){
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: new Container(
+              margin: EdgeInsets.only(top: 20.0),
+              color: Color(0x3399CCFF),
+              child: new Container(
+                child: new Row(
+                  children: <Widget>[
+                    widgets[0],
+                    widgets[1],
+                    widgets[2],
+                    widgets[3],
+                    widgets[4],
+                    widgets[5],
+                    widgets[6],
+                  ],
+                ),
+              )
+          ),
+        );
+      }else{
+        return new Container(
+            child: new Text(
+              '数据正在加载中,请稍等...',
+              textAlign: TextAlign.center,
+              style: new TextStyle(
+                  fontSize: 16.0,
+                  color: Color(0xFF333333)
+              ),
+            ),
+            margin: EdgeInsets.only(top: 10.0,)
+        );
+      }
+    }
+
+
     return new Scaffold(
         appBar: new AppBar(
           title: new Text('Flutter Weather'),
@@ -329,25 +401,28 @@ class WeatherState extends State<WeatherWidget>{
         body: new Stack(
           fit: StackFit.expand,
           children: <Widget>[
-//            new Image.asset("images/weather_bg.jpg",fit: BoxFit.fill),
-            new Column(
-              mainAxisAlignment: MainAxisAlignment.start, //垂直布局
-              crossAxisAlignment: CrossAxisAlignment.center,  //水平布局
-              children: <Widget>[
-                new Container(
-                  width: double.infinity,
-                  margin: EdgeInsets.only(top: 10.0),
-                  child: new Column(
-                    children: <Widget>[
-                      heaferSection,
-                      middleSection,
-                      bottomSection,
-                      dressSection,
-                    ],
-                  ),
-                )
-              ],
-            )
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.start, //垂直布局
+                crossAxisAlignment: CrossAxisAlignment.center,  //水平布局
+                children: <Widget>[
+                  new Container(
+                      margin: EdgeInsets.only(top: 10.0),
+                      width: double.infinity,
+                      child: new Column(
+                        children: <Widget>[
+                          heaferSection,
+                          middleSection,
+                          bottomSection,
+                          rebuildWeekWeather(),
+                          dressSection,
+                        ],
+                      ),
+                    ),
+                ],
+              ),
+            ),
           ],
         )
     );

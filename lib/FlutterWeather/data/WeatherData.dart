@@ -24,7 +24,7 @@ class WeatherData{
       cond: json['HeWeather6'][0]['now']['cond_txt'],
       tmp: json['HeWeather6'][0]['now']['tmp'],
       hum: "湿度 "+json['HeWeather6'][0]['now']['hum']+"%",
-      wind: json['HeWeather6'][0]['now']['wind_dir'] + json['HeWeather6'][0]['now']['wind_spd'] + "级",
+      wind: json['HeWeather6'][0]['now']['wind_dir'] + ' ' + json['HeWeather6'][0]['now']['wind_spd'] + "级",
       time: json['HeWeather6'][0]['update']['loc'],
       length: json['HeWeather6'][0]['now']['vis'],
     );
