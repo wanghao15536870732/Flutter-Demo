@@ -236,7 +236,5 @@ class RandomWordState extends State<RandomWords>{
       body: _buildSuggestion(),
     );
   }
-
-
 }
 
