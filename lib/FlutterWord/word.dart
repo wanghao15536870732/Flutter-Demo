@@ -50,7 +50,7 @@ class RandomWordState extends State<RandomWords>{
     final alreadySaved = _saved.contains(pair);
     return new ListTile(
       title: new Text(
-        pair.asPascalCase,
+        pair.first,
         style: _biggerFont,
       ),
       trailing: new Icon(
@@ -103,12 +103,12 @@ class RandomWordState extends State<RandomWords>{
                 (pair){
                   return new ListTile(
                     title: new Text(
-                      pair.asPascalCase,
+                      pair.first,
                       style: _biggerFont,
                     ),
                     onTap: (){
                       Navigator.of(context).push(
-                        new MaterialPageRoute(builder:(context) => new WordWidget(pair.asPascalCase)),
+                        new MaterialPageRoute(builder:(context) => new WordWidget(pair.first)),
                       );
                     },
                   );
@@ -222,6 +222,15 @@ class RandomWordState extends State<RandomWords>{
       ),
       appBar: new AppBar(
         title: new Text('Start Word Generator'),
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: (){
+              Navigator.pop(context);
+            }
+        ),
         actions: <Widget>[
           new IconButton(
               icon: new Icon(Icons.search),

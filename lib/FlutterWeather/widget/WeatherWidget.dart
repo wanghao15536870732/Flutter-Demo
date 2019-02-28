@@ -30,6 +30,9 @@ class WeatherState extends State<WeatherWidget>{
   List<Widget> widgets = new List();
   WeekData weekData = WeekData.empty();
 
+  //空气质量
+  WeatherAir weatherAir = WeatherAir.empty();
+
   WeatherState(String cityName){
     this.cityName = cityName;
     _getWeather();
@@ -39,10 +42,12 @@ class WeatherState extends State<WeatherWidget>{
     WeatherData data = await _fetchWeather();
     DressingData dataLife = await _fetchWeatherLife();
     WeekData dataWeek = await _fetchWeekWeather();
+    WeatherAir weatherair = await _fetchWeatherAir();
     setState((){
       weather = data;
       weatherLife = dataLife;
       this.weekData = dataWeek;
+      weatherAir = weatherair;
     });
   }
 
@@ -88,6 +93,19 @@ class WeatherState extends State<WeatherWidget>{
       return WeekData.fromJson(json.decode(response.body));
     } else {
       return WeekData.empty();
+    }
+  }
+
+  Future<WeatherAir> _fetchWeatherAir() async {
+    final response = await http.get(
+        'https://free-api.heweather.net/s6/air/now?&location=' +
+            cityName +
+            '&key=551f547c64b24816acfed8471215cd0e'
+    );
+    if (response.statusCode == 200) {
+      return WeatherAir.fromJson(json.decode(response.body));
+    } else {
+      return WeatherAir.empty();
     }
   }
 
@@ -178,8 +196,8 @@ class WeatherState extends State<WeatherWidget>{
             margin: EdgeInsets.only(right: 5.0),
             child: Image.asset(
               icon,
-              width: 20.0,
-              height: 20.0,
+              width: 25.0,
+              height: 25.0,
               fit: BoxFit.cover,
             ),
           ),
@@ -195,18 +213,32 @@ class WeatherState extends State<WeatherWidget>{
 
     Widget itemSection = Container(
       margin: EdgeInsets.only(top: 15.0,bottom: 5.0),
-      child: Row(
+      child: new Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           buildWeatherItem('images/weather_wind.png',weather.wind),
           buildWeatherItem('images/weather_hum.png',weather.hum),
-          buildWeatherItem('images/weather_visual.png',weather.length + '公里'),
+          buildWeatherItem('images/weather_rain.png',weather.cloud),
+        ],
+      ),
+    );
+
+
+    Widget itemSections = Container(
+      margin: EdgeInsets.only(top: 15.0,bottom: 5.0),
+      child: new Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          buildWeatherItem('images/weatherAirB.png',weatherAir.weatheralty),
+          buildWeatherItem('images/weatherAirg.png',weatherAir.weatheraqi),
+          buildWeatherItem('images/weather_pm2.5.png',weatherAir.weatherpmn),
         ],
       ),
     );
 
     Widget bottomSection = Column(
       children: <Widget>[
+        itemSections,
         itemSection,
         Divider(
           height: 1.0,
@@ -275,9 +307,9 @@ class WeatherState extends State<WeatherWidget>{
     );
 
     Widget buildFutureItem(String data, String weatherImg, String weather,
-        String temp, String windair, String windsc) {
+        String temp, String windair, String windsc,String weatherImg_n,String weather_n) {
       return Container(
-        height: 260.0,
+        height: 300.0,
         width: 115.0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -338,6 +370,25 @@ class WeatherState extends State<WeatherWidget>{
                 ),
               ),
             ),
+            new Container(
+              margin: EdgeInsets.only(top: 10.0),
+              child: Image.asset(
+                weatherImg_n,
+                width: 40.0,
+                height: 40.0,
+                fit: BoxFit.fill,
+              ),
+            ),
+            new Container(
+              margin: EdgeInsets.only(top: 10.0),
+              child: new Text(
+                weather_n,
+                style: new TextStyle(
+                  fontSize: 18.0,
+                  color: Color(0xFF333333),
+                ),
+              ),
+            )
           ],
         ),
       );
@@ -354,6 +405,8 @@ class WeatherState extends State<WeatherWidget>{
                 weekData.htempture[index].toString() + ' ℃',
             weekData.winddir[index].toString(),
             weekData.windsc[index].toString() + '级',
+            'images/' + weekData.code_n[index].toString() + '.png',
+            weekData.weather_n[index].toString(),
           ),
         );
       }

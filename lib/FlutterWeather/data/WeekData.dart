@@ -7,6 +7,8 @@ class WeekData{
   List<dynamic> htempture;  //最高温度
   List<dynamic> winddir; //风向
   List<dynamic> windsc; //风速
+  List<dynamic> code_n;  //夜间天气代码
+  List<dynamic> weather_n;  //夜间天气
 
   WeekData({
     this.code,
@@ -16,6 +18,8 @@ class WeekData{
     this.htempture,
     this.winddir,
     this.windsc,
+    this.code_n,
+    this.weather_n,
   });
 
   /**
@@ -57,6 +61,8 @@ class WeekData{
     List weekhtemp = [];
     List weekwinddir = [];
     List weekwinsc = [];
+    List weekcode_n = [];
+    List weekweather_n = [];
 
     for(int i = 0;i < week.length;i ++){
       weekcode.add(week[i]['cond_code_d']);
@@ -65,7 +71,9 @@ class WeekData{
       weekltemp.add(week[i]['tmp_min']);
       weekhtemp.add(week[i]['tmp_max']);
       weekwinddir.add(week[i]['wind_dir']);
-      weekwinsc.add(week[i]['wind_spd']);
+      weekwinsc.add(week[i]['wind_sc']);
+      weekcode_n.add(week[i]['cond_code_n']);
+      weekweather_n.add(week[i]['cond_txt_n']);
     }
 
     print(weekcode.toString());
@@ -75,6 +83,8 @@ class WeekData{
     print(weekhtemp.toString());
     print(weekwinddir.toString());
     print(weekwinsc.toString());
+    print(weekcode_n.toString());
+    print(weekweather_n.toString());
 
     return new WeekData(
       code: weekcode,
@@ -84,6 +94,8 @@ class WeekData{
       htempture: weekhtemp,
       winddir: weekwinddir,
       windsc: weekwinsc,
+      code_n: weekcode_n,
+      weather_n: weekweather_n,
     );
   }
 
@@ -96,6 +108,8 @@ class WeekData{
       htempture: [],
       winddir: [],
       windsc: [],
+      code_n: [],
+      weather_n: [],
     );
   }
 }

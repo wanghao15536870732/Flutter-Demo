@@ -62,9 +62,9 @@ class WordData{
     var exp = '';
     for(int i = 0;i < explains.length;i++){
       if(i == 0){
-        exp = exp + explains[i];
+        exp = '\n' + exp + explains[i] + '\n';
       }else{
-        exp = exp + ',' + explains[i];
+        exp = exp + explains[i] + '\n';
       }
     }
 
@@ -80,9 +80,9 @@ class WordData{
         }
       }
       if(i == 0){
-        we = we + webs[i]['key'] + ':' + val;
+        we ='\n' +  ' ' + we + webs[i]['key'] + ':' + val + '\n';
       }else{
-        we = we + ' ' + webs[i]['key'] + ':' + val;
+        we = we + ' ' + webs[i]['key'] + ':' + val + '\n';
       }
     }
 

@@ -43,9 +43,9 @@ class WeekWeatherState extends State<FlutterLake> {
   }
 
   Widget buildFutureItem(String data, String weatherImg, String weather,
-      String temp, String windair, String windsc) {
+      String temp, String windair, String windsc,String weatherImg_n,String weather_n) {
     return Container(
-      height: 260.0,
+      height: 300.0,
       width: 115.0,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -106,6 +106,25 @@ class WeekWeatherState extends State<FlutterLake> {
               ),
             ),
           ),
+          new Container(
+            margin: EdgeInsets.only(top: 10.0),
+            child: Image.asset(
+              weatherImg_n,
+              width: 40.0,
+              height: 40.0,
+              fit: BoxFit.fill,
+            ),
+          ),
+          new Container(
+            margin: EdgeInsets.only(top: 10.0),
+            child: new Text(
+              weather_n,
+              style: new TextStyle(
+                fontSize: 18.0,
+                color: Color(0xFF333333),
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -139,6 +158,8 @@ class WeekWeatherState extends State<FlutterLake> {
               weekData.htempture[index].toString() + ' ℃',
           weekData.winddir[index].toString(),
           weekData.windsc[index].toString() + '级',
+          'images/' + weekData.code_n[index].toString() + '.png',
+          weekData.weather_n[index].toString(),
         ),
       );
     }

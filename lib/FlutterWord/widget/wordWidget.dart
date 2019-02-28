@@ -120,14 +120,34 @@ class WordState extends State<WordWidget>{
         new Text('英式发音：' + data.uk),
         new Divider(),
         new Text(
-          '翻译解析：' + data.transExp,
+          '翻译解析：',
           style: new TextStyle(
             fontSize: 14.0,
             color: Colors.redAccent,
           ),
         ),
+        new Container(
+          margin: EdgeInsets.only(left: 15.0),
+          child: new Text(
+            data.transExp,
+            style: new TextStyle(
+              fontSize: 14.0,
+              color: Colors.redAccent,
+            ),
+          ),
+        ),
         new Divider(),
-        new Text('网络翻译：' + data.webs),
+        new Text('网络翻译：' ),
+        new Container(
+          margin: EdgeInsets.only(left: 15.0),
+          child: new Text(
+            data.webs,
+            style: new TextStyle(
+              fontSize: 14.0,
+              color: Colors.redAccent,
+            ),
+          ),
+        ),
         new Divider(),
       ],
     );
@@ -154,6 +174,5 @@ class WordState extends State<WordWidget>{
       ),
     );
   }
-
 }
 
