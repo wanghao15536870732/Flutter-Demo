@@ -2,44 +2,33 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_lake/FlutterWeather/chart/PointsLineChart.dart';
 import 'package:flutter_lake/FlutterWeather/data/WeekData.dart';
 import 'package:http/http.dart' as http;
 
-class FlutterLake extends StatefulWidget{
+class WeekWeather extends StatefulWidget{
+
+  String cityName;
+  WeekData weekData = WeekData.empty();
+
+  WeekWeather(this.cityName,this.weekData);
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return WeekWeatherState();
+    return WeekWeatherState(this.cityName,weekData);
   }
 }
 
-class WeekWeatherState extends State<FlutterLake> {
+class WeekWeatherState extends State<WeekWeather> {
 
+  String cityName;
   List<Widget> widgets = new List();
   WeekData weekData = WeekData.empty();
 
-  WeekWeatherState() {
-    _getWeekWeather();
-  }
-
-  void _getWeekWeather() async {
-    WeekData data = await _fetchWeekWeather();
-    setState(() {
-      this.weekData = data;
-    });
-  }
-
-  Future<WeekData> _fetchWeekWeather() async {
-    final response = await http.get(
-        'https://free-api.heweather.net/s6/weather/forecast?parameters&location=' +
-            '太原' +
-            '&key=551f547c64b24816acfed8471215cd0e'
-    );
-    if (response.statusCode == 200) {
-      return WeekData.fromJson(json.decode(response.body));
-    } else {
-      return WeekData.empty();
-    }
+  WeekWeatherState(String cityName,WeekData wordata) {
+    this.cityName = cityName;
+    this.weekData = wordata;
   }
 
   Widget buildFutureItem(String data, String weatherImg, String weather,
@@ -55,7 +44,7 @@ class WeekWeatherState extends State<FlutterLake> {
             child: Text(
               data.substring(5,7) + '月' + data.substring(8,10) + '日',
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 18.0,
                 color: Color(0xFF333333),
               ),
             ),
@@ -71,7 +60,7 @@ class WeekWeatherState extends State<FlutterLake> {
             child: Text(
               weather,
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: 16.0,
                 color: Color(0xFF333333),
               ),
             ),
@@ -81,7 +70,7 @@ class WeekWeatherState extends State<FlutterLake> {
             child: Text(
               temp,
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: 16.0,
                 color: Color(0xFF333333),
               ),
             ),
@@ -91,7 +80,7 @@ class WeekWeatherState extends State<FlutterLake> {
             child: Text(
               windair,
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: 16.0,
                 color: Color(0xFF333333),
               ),
             ),
@@ -101,7 +90,7 @@ class WeekWeatherState extends State<FlutterLake> {
             child: Text(
               windsc,
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: 16.0,
                 color: Color(0xFF333333),
               ),
             ),
@@ -120,18 +109,18 @@ class WeekWeatherState extends State<FlutterLake> {
             child: new Text(
               weather_n,
               style: new TextStyle(
-                fontSize: 18.0,
+                fontSize: 16.0,
                 color: Color(0xFF333333),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
   }
 
-  Widget buildWeekWeather() {
 
+  Widget buildWeekWeather() {
     return new Container(
       child: new Row(
         children: <Widget>[
@@ -193,19 +182,27 @@ class WeekWeatherState extends State<FlutterLake> {
     }
   }
 
+  Widget chartSection(){
+    return Container(
+      height: 150.0,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-
     // TODO: implement build
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text('Flutter Week Weather'),
+          title: new Text('未来一周天气'),
         ),
-        body: new Stack(
+        body: new Column(
           children: <Widget>[
             rebuildWeekWeather(),
-            new Text('Hello World'),
+            new Container(
+              height: 200.0,
+              width: 600.0,
+              child: PointsLineChart.withSampleData(weekData),
+            ),
           ],
         )
     );

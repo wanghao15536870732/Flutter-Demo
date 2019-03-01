@@ -29,7 +29,7 @@ class WeatherData{
       wind: json['HeWeather6'][0]['now']['wind_dir'] + ' ' + json['HeWeather6'][0]['now']['wind_sc'] + " 级",
       time: json['HeWeather6'][0]['update']['loc'],
       length: json['HeWeather6'][0]['now']['vis'],
-      cloud: '云量 ' + json['HeWeather6'][0]['now']['cloud'],
+      cloud: json['HeWeather6'][0]['now']['cloud'],
     );
   }
 
@@ -50,19 +50,29 @@ class WeatherData{
 class WeatherAir{
   final String weatheraqi;  //空气质量指数
   final String weatheralty;  //空气质量
-  final String weatherpmn;  //
+  final String weatherpmn;  //pm2.5
+  final String weatherpm10; //pm10
+  final String weatherNo2; //no2
+  final String weatherSo2; //So2
+
 
   WeatherAir({
     this.weatheraqi,
     this.weatheralty,
-    this.weatherpmn
+    this.weatherpmn,
+    this.weatherpm10,
+    this.weatherNo2,
+    this.weatherSo2,
   });
 
   factory WeatherAir.fromJson(Map<String,dynamic> json){
     return WeatherAir(
-      weatheraqi: 'AQI  ' + json['HeWeather6'][0]['air_now_city']['aqi'],
+      weatheraqi: json['HeWeather6'][0]['air_now_city']['aqi'],
       weatheralty: json['HeWeather6'][0]['air_now_city']['qlty'],
-      weatherpmn: '  ' + json['HeWeather6'][0]['air_now_city']['pm25'],
+      weatherpmn: json['HeWeather6'][0]['air_now_city']['pm25'],
+      weatherpm10: json['HeWeather6'][0]['air_now_city']['pm10'],
+      weatherNo2: json['HeWeather6'][0]['air_now_city']['no2'],
+      weatherSo2: json['HeWeather6'][0]['air_now_city']['so2'],
     );
   }
 
@@ -72,6 +82,9 @@ class WeatherAir{
       weatherpmn: "",
       weatheralty: "",
       weatheraqi: "",
+      weatherpm10: "",
+      weatherNo2: "",
+      weatherSo2: "",
     );
   }
 }

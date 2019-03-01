@@ -153,7 +153,18 @@ class RandomWordState extends State<RandomWords>{
     );
   }
 
+
   void _pushSearth(){
+
+
+    final _suggestion = <String>[];
+
+    void getWord(String str){
+      if(_suggestions.contains(str)){
+        _suggestion.add(str);
+      }
+    }
+
     Navigator.of(context).push(
       new MaterialPageRoute(
           builder: (context){
@@ -162,9 +173,38 @@ class RandomWordState extends State<RandomWords>{
                 title: new Text('搜索'),
                 elevation: 0.0 ,
               ),
-              body: new Center(
-                  child: new Text('Hello World'),
-              ),
+              body: Stack(
+                alignment: const Alignment(0.0, -1.0),
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(color: Colors.grey[100]),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 18.0,right: 18.0),
+                      child: TextField(
+                        autofocus: true,
+                        decoration: new InputDecoration(
+                          border: InputBorder.none,
+                          icon: Icon(
+                            Icons.search,
+                            color: Colors.black,
+                          ),
+                          hintText: 'Please enter the word you want to query.'
+                        ),
+                        onChanged: (str){
+                          getWord(str);
+                        },
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 40.0),
+                    child: ListView.builder(
+                        itemCount: _suggestion.length,
+                        itemBuilder: (context,index) => EntryItem(_suggestion[index]) ,
+                    ),
+                  )
+                ],
+              )
             );
           }
       )
@@ -243,6 +283,25 @@ class RandomWordState extends State<RandomWords>{
         ],
       ),
       body: _buildSuggestion(),
+    );
+  }
+}
+
+class EntryItem extends StatelessWidget{
+
+  final String word;
+  const EntryItem( this.word);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return InkWell(
+      onTap: ((){
+        Navigator.of(context).pop(word);
+      }),
+      child: ListTile(
+        title: Text(word),
+      ),
     );
   }
 }

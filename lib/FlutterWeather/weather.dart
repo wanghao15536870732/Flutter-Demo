@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lake/FlutterWeather/data/CityData.dart';
 import 'package:flutter_lake/FlutterWeather/widget/CityWidget.dart';
 import 'package:flutter_lake/FlutterWeather/widget/WeatherWidget.dart';
+import 'package:flutter_lake/FlutterWord/widget/searchWidget.dart';
 
 void main(){
   setCustomErrorPage();
@@ -19,8 +20,6 @@ void setCustomErrorPage(){
     );
   };
 }
-
-
 
 class Weather extends StatelessWidget{
 
@@ -97,6 +96,13 @@ class Weather extends StatelessWidget{
               }
           ),
           actions: <Widget>[
+            new IconButton(
+                icon: new Icon(Icons.search),
+                onPressed:(){
+                  Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => new SearchWidget())
+                  );}
+                ),
             new IconButton(
               icon: new Icon(Icons.location_city),
               onPressed: _pushCity

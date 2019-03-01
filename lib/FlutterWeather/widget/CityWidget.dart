@@ -45,7 +45,7 @@ class CityState extends State<CityWidget>{
     final response = await http.get('https://search.heweather.net/top?group=cn&number=50&key=551f547c64b24816acfed8471215cd0e');
 
     List<CityData> cityList = new List<CityData>();
-
+    cityList.add(new CityData('定位'));
     if(response.statusCode == 200){
       //解析数据
       Map<String,dynamic> result = json.decode(response.body);
@@ -61,30 +61,47 @@ class CityState extends State<CityWidget>{
 
   Widget _buildRow(CityData citydata,int index){
     final alreadySaved = _saved.contains(citydata);
-    return new ListTile(
-      title: GestureDetector(
-        child: Text(cityList[index].cityName),
-        onTap: (){  //List的Item
-          Navigator.push( //相当于Android里面得Intent
-            context,
-            MaterialPageRoute(builder: (context) => WeatherWidget(cityList[index].cityName)),
-          );
+    if(index == 0){
+      return new ListTile(
+        title: GestureDetector(
+          child: Text(cityList[index].cityName),
+          onTap: (){  //List的Item
+
+          },
+        ),
+        leading: new Icon(
+          Icons.location_on,
+        ),
+        onTap: (){
+
         },
-      ),
-      trailing: new Icon(
-        alreadySaved ? Icons.favorite : Icons.favorite_border,
-        color: alreadySaved ? Colors.red : null,
-      ),
-      onTap: (){
-        setState(() {  //当图标被点击时，函数调用setState()会为State对象触发build()方法，从而导致对UI的更新
-          if(alreadySaved){  //如果单词条目已经添加到收藏夹中
-            _saved.remove(citydata);  //再次点击它将其从收藏夹中删除
-          }else{
-            _saved.add(citydata);
-          }
-        });
-      },
-    );
+      );
+    }else{
+      return new ListTile(
+        title: GestureDetector(
+          child: Text(cityList[index].cityName),
+          onTap: (){  //List的Item
+            Navigator.push( //相当于Android里面得Intent
+              context,
+              MaterialPageRoute(builder: (context) => WeatherWidget(cityList[index].cityName)),
+            );
+          },
+        ),
+        trailing: new Icon(
+          alreadySaved ? Icons.favorite : Icons.favorite_border,
+          color: alreadySaved ? Colors.red : null,
+        ),
+        onTap: (){
+          setState(() {  //当图标被点击时，函数调用setState()会为State对象触发build()方法，从而导致对UI的更新
+            if(alreadySaved){  //如果单词条目已经添加到收藏夹中
+              _saved.remove(citydata);  //再次点击它将其从收藏夹中删除
+            }else{
+              _saved.add(citydata);
+            }
+          });
+        },
+      );
+    }
   }
 
   Set returnSave(){
