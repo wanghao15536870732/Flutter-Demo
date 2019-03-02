@@ -43,7 +43,6 @@ class CityState extends State<CityWidget>{
 
   Future<List<CityData>> _fetchCityList() async{  //有await标记的运算，其结果值都是一个Future对象，
     final response = await http.get('https://search.heweather.net/top?group=cn&number=50&key=551f547c64b24816acfed8471215cd0e');
-
     List<CityData> cityList = new List<CityData>();
     cityList.add(new CityData('定位'));
     if(response.statusCode == 200){

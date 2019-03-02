@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lake/FlutterWeather/chart/PointsLineChart.dart';
+import 'package:flutter_lake/FlutterWeather/chart/TimeSeriesBar.dart';
 import 'package:flutter_lake/FlutterWeather/data/WeekData.dart';
 import 'package:http/http.dart' as http;
 
@@ -182,27 +183,45 @@ class WeekWeatherState extends State<WeekWeather> {
     }
   }
 
-  Widget chartSection(){
+  Widget buildWeekText(String str){
     return Container(
-      height: 150.0,
+      color: Colors.lightBlueAccent,
+      child: new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          new Container(
+              margin: EdgeInsets.only(top: 10.0,bottom: 10.0),
+              child: new Text(
+                str,
+                style: new TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.white,
+                ),
+              )
+          ),
+        ],
+      ),
     );
   }
+
+  AlertDialog dialog = new AlertDialog(
+    content:  new Container(
+        height: 200.0,
+        width: 600.0,
+      ),
+  );
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text('未来一周天气'),
+          title: new Text('the coming week'),
         ),
         body: new Column(
           children: <Widget>[
             rebuildWeekWeather(),
-            new Container(
-              height: 200.0,
-              width: 600.0,
-              child: PointsLineChart.withSampleData(weekData),
-            ),
+            buildWeekText('未来一周天气'),
           ],
         )
     );

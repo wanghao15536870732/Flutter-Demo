@@ -33,6 +33,7 @@ class RandomWordState extends State<RandomWords>{
 
   final searchController = TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final TextEditingController _controller = new TextEditingController();
 
   //向RandomWordsState类中添加一个_suggestions列表以保存建议的单词对。
   //该变量以下划线"_"开头，在Dart语言中会强制其变成私有的
@@ -75,7 +76,6 @@ class RandomWordState extends State<RandomWords>{
   Widget _buildSuggestion(){
     return new ListView.builder(
       padding: const EdgeInsets.all(16.0), //四周padding都设为16.0
-
       /*
     itemBuilder 值是一个匿名回调函数,该模型允许建议的单词对列表在用户滚动时无限增长。
     * */
@@ -92,7 +92,6 @@ class RandomWordState extends State<RandomWords>{
       },
     );
   }
-
 
 
   void _pushSaved(){
@@ -154,63 +153,6 @@ class RandomWordState extends State<RandomWords>{
   }
 
 
-  void _pushSearth(){
-
-
-    final _suggestion = <String>[];
-
-    void getWord(String str){
-      if(_suggestions.contains(str)){
-        _suggestion.add(str);
-      }
-    }
-
-    Navigator.of(context).push(
-      new MaterialPageRoute(
-          builder: (context){
-            return new Scaffold(
-              appBar: new AppBar(
-                title: new Text('搜索'),
-                elevation: 0.0 ,
-              ),
-              body: Stack(
-                alignment: const Alignment(0.0, -1.0),
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(color: Colors.grey[100]),
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 18.0,right: 18.0),
-                      child: TextField(
-                        autofocus: true,
-                        decoration: new InputDecoration(
-                          border: InputBorder.none,
-                          icon: Icon(
-                            Icons.search,
-                            color: Colors.black,
-                          ),
-                          hintText: 'Please enter the word you want to query.'
-                        ),
-                        onChanged: (str){
-                          getWord(str);
-                        },
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(top: 40.0),
-                    child: ListView.builder(
-                        itemCount: _suggestion.length,
-                        itemBuilder: (context,index) => EntryItem(_suggestion[index]) ,
-                    ),
-                  )
-                ],
-              )
-            );
-          }
-      )
-    );
-  }
-
 
   //该方法通过将生成单词对的代码从MyApp移动到RandomWordsState来生成单词对。
   @override
@@ -228,11 +170,11 @@ class RandomWordState extends State<RandomWords>{
             controller: searchController,
             textInputAction: TextInputAction.search,
             onSubmitted: (String name){
-              searchController.clear();
-              _saved.add(WordPair(name, ""));
+              print(name);
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => new WordWidget(name)),
+                MaterialPageRoute(builder: (context) => new WordWidget(name.toString())),
               );
+              searchController.clear();
             },
             maxLines: 1,
             style: new TextStyle(fontSize: 16.0,color: Colors.grey),
@@ -260,22 +202,10 @@ class RandomWordState extends State<RandomWords>{
         label: new Text("单词"),
         onPressed: _showCityTextField,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: new AppBar(
         title: new Text('Start Word Generator'),
-        leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            onPressed: (){
-              Navigator.pop(context);
-            }
-        ),
         actions: <Widget>[
-          new IconButton(
-              icon: new Icon(Icons.search),
-              onPressed: _pushSearth
-          ),
           new IconButton(
               icon: new Icon(Icons.list),
               onPressed: _pushSaved
@@ -286,23 +216,3 @@ class RandomWordState extends State<RandomWords>{
     );
   }
 }
-
-class EntryItem extends StatelessWidget{
-
-  final String word;
-  const EntryItem( this.word);
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return InkWell(
-      onTap: ((){
-        Navigator.of(context).pop(word);
-      }),
-      child: ListTile(
-        title: Text(word),
-      ),
-    );
-  }
-}
-

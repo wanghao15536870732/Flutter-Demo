@@ -16,7 +16,7 @@ class PointsLineChart extends StatelessWidget {
     return new PointsLineChart(
       _createSampleData(data),
       // Disable animations for image tests.
-      animate: false,
+      animate: true,
     );
   }
 
@@ -48,7 +48,7 @@ class PointsLineChart extends StatelessWidget {
       ),
       new charts.Series<LinearSales, int>(
         id: 'Sales2',
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
         domainFn: (LinearSales sales, _) => sales.year,
         measureFn: (LinearSales sales, _) => sales.sales2,
         data: data,
@@ -61,6 +61,5 @@ class LinearSales {
   final int year;
   final int sales;
   final int sales2;
-
   LinearSales(this.year, this.sales,this.sales2);
 }

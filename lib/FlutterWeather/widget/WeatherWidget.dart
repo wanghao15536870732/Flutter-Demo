@@ -2,6 +2,8 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_lake/FlutterWeather/chart/PointsLineChart.dart';
+import 'package:flutter_lake/FlutterWeather/chart/TimeSeriesBar.dart';
 import 'package:flutter_lake/FlutterWeather/widget/WeekWeather.dart';
 import 'package:flutter_lake/FlutterWeather/data/DressingData.dart';
 import 'package:flutter_lake/FlutterWeather/data/WeatherData.dart';
@@ -153,30 +155,55 @@ class WeatherState extends State<WeatherWidget>{
     );
 
     Widget tempSection = Center(
-      child: Stack(
-        children: <Widget>[
-          Align(
-            alignment: FractionalOffset(0.5, 0.5),
-            child: new Text(
-              weather.tmp,
-              style: new TextStyle(
-                fontSize: 120.0,
-                fontFamily: 'AdobeClean',
+      child: new GestureDetector(
+        child: Stack(
+          children: <Widget>[
+            Align(
+              alignment: FractionalOffset(0.5, 0.5),
+              child: new Text(
+                weather.tmp,
+                style: new TextStyle(
+                  fontSize: 120.0,
+                  fontFamily: 'AdobeClean',
+                ),
               ),
             ),
-          ),
-          Align(
-            alignment: FractionalOffset(0.7, 0.0),
-            child: new Text(
-              '℃',
-              style: new TextStyle(
-                fontSize: 30.0,
-                color: Color(0xFF707070)
+            Align(
+              alignment: FractionalOffset(0.7, 0.0),
+              child: new Text(
+                '℃',
+                style: new TextStyle(
+                    fontSize: 30.0,
+                    color: Color(0xFF707070)
+                ),
               ),
-            ),
-          )
-        ],
-      ),
+            )
+          ],
+        ),
+        onTap: (){
+          Navigator.of(context).push(
+              new MaterialPageRoute(
+                  builder: (context){
+                    return new Scaffold(
+                      appBar: new AppBar(
+                        title:new Text('未来七天温度变化'),
+                        elevation: 0.0,
+                      ),
+                      body: new Column(
+                        children: <Widget>[
+                          new Container(
+                            height: 200.0,
+                            width: 600.0,
+                            child: PointsLineChart.withSampleData(weekData),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+              )
+          );
+        },
+      )
     );
 
     Widget detailSection = Container(
@@ -517,6 +544,32 @@ class WeatherState extends State<WeatherWidget>{
         appBar: new AppBar(
           title: new Text('Flutter Weather'),
           actions: <Widget>[
+            new IconButton(
+                icon: new Image.asset('images/weather_rain.png'),
+                onPressed: (){
+                  Navigator.of(context).push(
+                      new MaterialPageRoute(
+                          builder: (context){
+                            return new Scaffold(
+                              appBar: new AppBar(
+                                title:new Text('未来七天降水变化'),
+                                elevation: 0.0,
+                              ),
+                              body: new Column(
+                                children: <Widget>[
+                                  new Container(
+                                    height: 200.0,
+                                    width: 600.0,
+                                    child: TimeSeriesBar.withSampleData(weekData),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                      )
+                  );
+                }
+            ),
             new IconButton(
                 icon: new Icon(Icons.near_me),
                 onPressed: (){
