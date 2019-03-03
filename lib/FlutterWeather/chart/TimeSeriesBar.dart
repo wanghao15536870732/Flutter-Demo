@@ -26,7 +26,14 @@ class TimeSeriesBar extends StatelessWidget {
       defaultRenderer: new charts.BarRendererConfig<DateTime>(),
       domainAxis: new charts.DateTimeAxisSpec(usingBarRenderer: true),
       defaultInteractions: false,
-      behaviors: [new charts.SelectNearest(), new charts.DomainHighlighter()],
+      behaviors: [
+        new charts.SelectNearest(),
+        new charts.DomainHighlighter(),
+        new charts.ChartTitle('(单位 mm)',
+            behaviorPosition: charts.BehaviorPosition.bottom,
+            titleOutsideJustification:
+            charts.OutsideJustification.middleDrawArea),
+      ],
     );
   }
   

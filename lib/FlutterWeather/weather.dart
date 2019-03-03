@@ -2,10 +2,13 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_lake/CircleFloatingMenu/circle_floating_menu.dart';
+import 'package:flutter_lake/CircleFloatingMenu/floating_button.dart';
 import 'package:flutter_lake/FlutterWeather/data/CityData.dart';
 import 'package:flutter_lake/FlutterWeather/widget/CityWidget.dart';
 import 'package:flutter_lake/FlutterWeather/widget/WeatherWidget.dart';
 import 'package:flutter_lake/FlutterWord/widget/searchWidget.dart';
+import 'package:oktoast/oktoast.dart';
 
 void main(){
   setCustomErrorPage();
@@ -101,7 +104,45 @@ class Weather extends StatelessWidget{
             )
           ],
         ),
-        body: CityWidget(),
+        body: new Stack(
+          children: <Widget>[
+            CityWidget(),
+            Positioned(
+              width: 120.0,
+              height: 100.0,
+              bottom: 12.0,
+              right: 0.1,
+              child: CircleFloatingMenu(
+                menuSelected: (index){
+                  showToast('You Choose NO.$index');
+                },
+                floatingButton: FloatingButton(
+                  color: Colors.pinkAccent,
+                  icon: Icons.add,
+                  size: 30.0,
+                ),
+                subMenus:<Widget>[
+                  FloatingButton(
+                    icon: Icons.widgets,
+                    elevation: 1.0,
+                  ),
+                  FloatingButton(
+                    icon: Icons.translate,
+                    elevation: 0.0,
+                  ),
+                  FloatingButton(
+                    icon: Icons.alarm_add,
+                    elevation: 0.0,
+                  ),
+                  FloatingButton(
+                    icon: Icons.bluetooth,
+                    elevation: 0.0,
+                  ),
+                ],
+              ),
+            )
+          ],
+        )
       )
     );
   }

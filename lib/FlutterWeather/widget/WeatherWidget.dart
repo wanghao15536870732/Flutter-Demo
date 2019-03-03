@@ -191,6 +191,48 @@ class WeatherState extends State<WeatherWidget>{
                       ),
                       body: new Column(
                         children: <Widget>[
+                          new Row(
+                            children: <Widget>[
+                              new Container(
+                                margin: EdgeInsets.only(top: 10.0,bottom: 10.0,left: 15.0),
+                                child: new Icon(
+                                  Icons.format_color_text,
+                                  color: Colors.blueAccent,
+                                ),
+                              ),
+                              new Container(
+                                margin: EdgeInsets.only(top: 10.0,bottom: 10.0,left: 15.0),
+                                child: new Text(
+                                  '最高温度  ℃',
+                                  style: new TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.blueAccent,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          new Row(
+                            children: <Widget>[
+                              new Container(
+                                margin: EdgeInsets.only(top: 10.0,bottom: 10.0,left: 15.0),
+                                child: new Icon(
+                                  Icons.format_color_text,
+                                  color: Colors.green,
+                                ),
+                              ),
+                              new Container(
+                                margin: EdgeInsets.only(top: 10.0,bottom: 10.0,left: 15.0),
+                                child: new Text(
+                                  '最低温度  ℃',
+                                  style: new TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                           new Container(
                             height: 200.0,
                             width: 600.0,
@@ -539,6 +581,30 @@ class WeatherState extends State<WeatherWidget>{
       )
     );
 
+    Row buildItem(String str,int count){
+      return Row(
+        children: <Widget>[
+          new Container(
+            margin: EdgeInsets.only(top: 10.0,bottom: 5.0,left: 15.0),
+            child: new Icon(
+              Icons.invert_colors,
+              color: Colors.blue[count],
+            ),
+          ),
+          new Container(
+            margin: EdgeInsets.only(top: 10.0,bottom: 5.0,left: 15.0),
+            child: new Text(
+              str,
+              style: new TextStyle(
+                fontSize: 16.0,
+                color: Colors.blue[count],
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+
 
     return new Scaffold(
         appBar: new AppBar(
@@ -557,8 +623,12 @@ class WeatherState extends State<WeatherWidget>{
                               ),
                               body: new Column(
                                 children: <Widget>[
+                                  buildItem('小雨  10mm以下',200),
+                                  buildItem('中雨  10~24.9mm',400),
+                                  buildItem('大雨  25~49.9mm',600),
+                                  buildItem('暴雨  50~99.9mm',800),
                                   new Container(
-                                    height: 200.0,
+                                    height: 230.0,
                                     width: 600.0,
                                     child: TimeSeriesBar.withSampleData(weekData),
                                   ),
