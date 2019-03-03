@@ -202,7 +202,8 @@ class RandomWordState extends State<RandomWords>{
         label: new Text("单词"),
         onPressed: _showCityTextField,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat
+      ,
       appBar: new AppBar(
         title: new Text('Start Word Generator'),
         actions: <Widget>[
