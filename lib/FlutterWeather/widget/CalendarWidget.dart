@@ -52,84 +52,62 @@ class CalendarState extends State<CalendarWidget>{
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                calendardata.date.substring(0,4) + '年' + calendardata.date.substring(6,7)  + '月' +calendardata.date.substring(9,10) + '日'  ,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.black54,
-                ),
-              )
-            ],
-          ),
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                calendardata.lunarCalendar,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.black54,
-                ),
-              )
-            ],
-          ),
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                calendardata.solarTerms,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.black54,
-                ),
-              )
-            ],
-          ),
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                calendardata.yearTips + calendardata.chineseZodliaz + '年',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.black54,
-                ),
-              )
-            ],
-          ),
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                width: 380.0,
-                child: Text(
-                  calendardata.avoid,
+          new Container(
+            width: double.infinity,
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(top: 10.0,left: 10.0),
+            child:  Row(
+              children: <Widget>[
+                Text(
+                  calendardata.yearTips +
+                      calendardata.chineseZodliaz + '年  ' +
+                      calendardata.lunarCalendar + '  ' +
+                      calendardata.solarTerms,
                   style: TextStyle(
-                    fontSize: 16.0,
-                    color: Colors.black54,
+                    fontSize: 26.0,
+                    color: Colors.orangeAccent,
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                width: 280.0,
-                child: Text(
-                  calendardata.suit,
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    color: Colors.black54,
+
+         new Container(
+           color: Colors.grey[200],
+           margin: EdgeInsets.only(top: 10.0,right: 5.0,left: 5.0),
+           child: new Row(
+             children: <Widget>[
+               Container(
+                 width: 400.0,
+                 child: Text(
+                   '宜：' + calendardata.suit,
+                   style: TextStyle(
+                     fontSize: 16.0,
+                     color: Colors.black54,
+                   ),
+                 ),
+               )
+             ],
+           ),
+         ),
+          new Container(
+            color: Colors.grey[200],
+            margin: EdgeInsets.only(right: 5.0,left: 5.0,bottom: 15.0),
+            child: new Row(
+              children: <Widget>[
+                Container(
+                  width: 320.0,
+                  child: Text(
+                    '忌：'+ calendardata.avoid,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black54,
+                    ),
                   ),
-                ),
-              )
-            ],
-          ),
+                )
+              ],
+            ),
+          )
         ],
       );
     }else{
