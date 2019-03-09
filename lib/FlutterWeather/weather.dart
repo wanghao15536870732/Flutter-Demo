@@ -1,13 +1,9 @@
-
-import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_lake/CircleFloatingMenu/circle_floating_menu.dart';
-import 'package:flutter_lake/CircleFloatingMenu/floating_button.dart';
-import 'package:flutter_lake/FlutterWeather/data/CityData.dart';
-import 'package:flutter_lake/FlutterWeather/widget/CityWidget.dart';
-import 'package:flutter_lake/FlutterWeather/widget/WeatherWidget.dart';
-import 'package:flutter_lake/FlutterWord/widget/searchWidget.dart';
+import 'package:flutter_demo/CircleFloatingMenu/circle_floating_menu.dart';
+import 'package:flutter_demo/CircleFloatingMenu/floating_button.dart';
+import 'package:flutter_demo/FlutterWeather/widget/CityWidget.dart';
+import 'package:flutter_demo/FlutterWord/widget/searchWidget.dart';
 import 'package:oktoast/oktoast.dart';
 
 void main(){

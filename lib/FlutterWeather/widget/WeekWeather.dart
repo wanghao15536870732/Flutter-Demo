@@ -2,9 +2,9 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_lake/FlutterWeather/chart/PointsLineChart.dart';
-import 'package:flutter_lake/FlutterWeather/chart/TimeSeriesBar.dart';
-import 'package:flutter_lake/FlutterWeather/data/WeekData.dart';
+import 'package:flutter_demo/FlutterWeather/chart/PointsLineChart.dart';
+import 'package:flutter_demo/FlutterWeather/chart/TimeSeriesBar.dart';
+import 'package:flutter_demo/FlutterWeather/data/WeekData.dart';
 import 'package:http/http.dart' as http;
 
 class WeekWeather extends StatefulWidget{

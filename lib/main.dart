@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lake/FlutterWeather/weather.dart';
-import 'package:flutter_lake/FlutterWord/word.dart';
+import 'package:flutter_demo/FlutterCalculator/calculator.dart';
+import 'package:flutter_demo/FlutterWeather/weather.dart';
+import 'package:flutter_demo/FlutterWord/word.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_lake/route.dart';
+import 'package:flutter_demo/route.dart';
 
 void main() => runApp(MyApp());
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         routes: {
           UIRoute.flutterWord:(_) => Word(),
           UIRoute.flutterWeather:(_) => Weather(),
+          UIRoute.flutterCalculator:(_) => Calculator(),
         },
       ),
     );
@@ -59,14 +61,14 @@ class _MyHomePageState extends State<MyHomePage> {
               elevation: 0.0,
             ),
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Colors.blueAccent,
-                  Colors.white,
-                ],
-              )
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Colors.blueAccent,
+                    Colors.white,
+                  ],
+                )
             ),
           ),
           preferredSize:
@@ -87,9 +89,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           child: ListView.builder(
-              itemBuilder: (context,index){
-                return _MenuDataItem(menus[index]);
-              },
+            itemBuilder: (context,index){
+              return _MenuDataItem(menus[index]);
+            },
             itemCount: menus.length,
           ),
         ),
@@ -118,7 +120,7 @@ class _MenuDataItem extends StatelessWidget{
         margin: EdgeInsets.fromLTRB(10.0,4.0,10.0,4.0),
         child: Card(
           child: Padding(
-              padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -160,13 +162,18 @@ class _MenuData{
 
 final List<_MenuData> menus = [
   const _MenuData(
-    title: 'FlutterWord',
+    title: 'Flutter Word',
     icon: Icons.language,
     routeName: UIRoute.flutterWord,
   ),
   const _MenuData(
-    title:'FlutterWeather',
+    title:'Flutter Weather',
     icon: Icons.ac_unit,
     routeName: UIRoute.flutterWeather,
+  ),
+  const _MenuData(
+    title: 'Flutter Calculator',
+    icon: Icons.add,
+    routeName: UIRoute.flutterCalculator,
   ),
 ];

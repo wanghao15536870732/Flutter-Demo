@@ -174,5 +174,4 @@ class CircleFloatingState extends State<CircleFloatingMenu>
       ),
     );
   }
-
 }

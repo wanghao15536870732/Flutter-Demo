@@ -9,13 +9,6 @@
             </list>
           </value>
         </entry>
-        <entry key="audioplayer">
-          <value>
-            <list>
-              <option value="D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/audioplayer-0.5.2/lib" />
-            </list>
-          </value>
-        </entry>
         <entry key="boolean_selector">
           <value>
             <list>
@@ -142,13 +135,6 @@
             </list>
           </value>
         </entry>
-        <entry key="path_provider">
-          <value>
-            <list>
-              <option value="D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-0.4.1/lib" />
-            </list>
-          </value>
-        </entry>
         <entry key="quiver">
           <value>
             <list>
@@ -223,7 +209,6 @@
     </properties>
     <CLASSES>
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/async-2.0.8/lib" />
-      <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/audioplayer-0.5.2/lib" />
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/boolean_selector-1.0.4/lib" />
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/charcode-1.1.2/lib" />
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/charts_common-0.5.0/lib" />
@@ -239,7 +224,6 @@
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/meta-1.1.6/lib" />
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/oktoast-2.1.5/lib" />
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path-1.6.2/lib" />
-      <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-0.4.1/lib" />
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/quiver-2.0.1/lib" />
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/source_span-1.4.1/lib" />
       <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/stack_trace-1.9.3/lib" />

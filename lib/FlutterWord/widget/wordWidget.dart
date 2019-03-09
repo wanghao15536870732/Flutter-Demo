@@ -1,9 +1,7 @@
-
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_lake/FlutterWord/data/wordData.dart';
+import 'package:flutter_demo/FlutterWord/data/wordData.dart';
 import 'package:http/http.dart' as http;
 
 class WordWidget extends StatefulWidget {

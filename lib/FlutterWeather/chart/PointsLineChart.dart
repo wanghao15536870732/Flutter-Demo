@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
-import 'package:flutter_lake/FlutterWeather/data/WeekData.dart';
+import 'package:flutter_demo/FlutterWeather/data/WeekData.dart';
 
 class PointsLineChart extends StatelessWidget {
 

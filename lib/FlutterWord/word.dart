@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
-import 'package:flutter_lake/FlutterWord/widget/wordWidget.dart';
+import 'package:flutter_demo/FlutterWord/widget/wordWidget.dart';
 
 class Word extends StatelessWidget {
   @override

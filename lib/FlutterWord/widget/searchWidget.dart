@@ -2,8 +2,8 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_lake/FlutterWeather/data/CityData.dart';
-import 'package:flutter_lake/FlutterWeather/widget/WeatherWidget.dart';
+import 'package:flutter_demo/FlutterWeather/data/CityData.dart';
+import 'package:flutter_demo/FlutterWeather/widget/WeatherWidget.dart';
 import 'package:http/http.dart' as http;
 
 class SearchWidget extends StatefulWidget {

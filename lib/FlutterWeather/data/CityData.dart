@@ -1,4 +1,3 @@
-
 class CityData{
   String cityName; //城市名
 

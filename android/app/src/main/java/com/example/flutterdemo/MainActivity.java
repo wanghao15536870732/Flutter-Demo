@@ -1,4 +1,4 @@
-package com.example.flutterlake;
+package com.example.flutterdemo;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

@@ -2,12 +2,13 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_lake/FlutterWeather/chart/PointsLineChart.dart';
-import 'package:flutter_lake/FlutterWeather/chart/TimeSeriesBar.dart';
-import 'package:flutter_lake/FlutterWeather/widget/WeekWeather.dart';
-import 'package:flutter_lake/FlutterWeather/data/DressingData.dart';
-import 'package:flutter_lake/FlutterWeather/data/WeatherData.dart';
-import 'package:flutter_lake/FlutterWeather/data/WeekData.dart';
+import 'package:flutter_demo/FlutterWeather/chart/PointsLineChart.dart';
+import 'package:flutter_demo/FlutterWeather/chart/TimeSeriesBar.dart';
+import 'package:flutter_demo/FlutterWeather/widget/CalendarWidget.dart';
+import 'package:flutter_demo/FlutterWeather/widget/WeekWeather.dart';
+import 'package:flutter_demo/FlutterWeather/data/DressingData.dart';
+import 'package:flutter_demo/FlutterWeather/data/WeatherData.dart';
+import 'package:flutter_demo/FlutterWeather/data/WeekData.dart';
 import 'package:http/http.dart' as http;
 
 class WeatherWidget extends StatefulWidget{
@@ -18,7 +19,6 @@ class WeatherWidget extends StatefulWidget{
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return new WeatherState(this.cityName);
   }
 }
@@ -75,9 +75,9 @@ class WeatherState extends State<WeatherWidget>{
    */
   Future<DressingData> _fetchWeatherLife() async{
     final response = await http.get(
-      'https://free-api.heweather.net/s6/weather/lifestyle?parameters&location=' +
-          cityName +
-          '&key=551f547c64b24816acfed8471215cd0e'
+        'https://free-api.heweather.net/s6/weather/lifestyle?parameters&location=' +
+            cityName +
+            '&key=551f547c64b24816acfed8471215cd0e'
     );
     if(response.statusCode == 200){
       return DressingData.fromJson(json.decode(response.body));
@@ -132,15 +132,15 @@ class WeatherState extends State<WeatherWidget>{
                 new Text(
                   this.cityName,
                   style: new TextStyle(
-                    fontSize: 24.0,
+                      fontSize: 24.0,
                       color: Color(0xFF707070)
                   ),
                 ),
 
                 new Text(
-                    weather?.cond,
+                  weather?.cond,
                   style: new TextStyle(
-                    fontSize: 18.0, color: Color(0xFF707070)
+                      fontSize: 18.0, color: Color(0xFF707070)
                   ),
                 )
               ],
@@ -155,97 +155,97 @@ class WeatherState extends State<WeatherWidget>{
     );
 
     Widget tempSection = Center(
-      child: new GestureDetector(
-        child: Stack(
-          children: <Widget>[
-            Align(
-              alignment: FractionalOffset(0.5, 0.5),
-              child: new Text(
-                weather.tmp,
-                style: new TextStyle(
-                  fontSize: 120.0,
-                  fontFamily: 'AdobeClean',
+        child: new GestureDetector(
+          child: Stack(
+            children: <Widget>[
+              Align(
+                alignment: FractionalOffset(0.5, 0.5),
+                child: new Text(
+                  weather.tmp,
+                  style: new TextStyle(
+                    fontSize: 120.0,
+                    fontFamily: 'AdobeClean',
+                  ),
                 ),
               ),
-            ),
-            Align(
-              alignment: FractionalOffset(0.7, 0.0),
-              child: new Text(
-                '℃',
-                style: new TextStyle(
-                    fontSize: 30.0,
-                    color: Color(0xFF707070)
+              Align(
+                alignment: FractionalOffset(0.7, 0.0),
+                child: new Text(
+                  '℃',
+                  style: new TextStyle(
+                      fontSize: 30.0,
+                      color: Color(0xFF707070)
+                  ),
                 ),
-              ),
-            )
-          ],
-        ),
-        onTap: (){
-          Navigator.of(context).push(
-              new MaterialPageRoute(
-                  builder: (context){
-                    return new Scaffold(
-                      appBar: new AppBar(
-                        title:new Text('未来七天温度变化'),
-                        elevation: 0.0,
-                      ),
-                      body: new Column(
-                        children: <Widget>[
-                          new Row(
-                            children: <Widget>[
-                              new Container(
-                                margin: EdgeInsets.only(top: 10.0,bottom: 10.0,left: 15.0),
-                                child: new Icon(
-                                  Icons.format_color_text,
-                                  color: Colors.blueAccent,
-                                ),
-                              ),
-                              new Container(
-                                margin: EdgeInsets.only(top: 10.0,bottom: 10.0,left: 15.0),
-                                child: new Text(
-                                  '最高温度  ℃',
-                                  style: new TextStyle(
-                                    fontSize: 16.0,
+              )
+            ],
+          ),
+          onTap: (){
+            Navigator.of(context).push(
+                new MaterialPageRoute(
+                    builder: (context){
+                      return new Scaffold(
+                        appBar: new AppBar(
+                          title:new Text('未来七天温度变化'),
+                          elevation: 0.0,
+                        ),
+                        body: new Column(
+                          children: <Widget>[
+                            new Row(
+                              children: <Widget>[
+                                new Container(
+                                  margin: EdgeInsets.only(top: 10.0,bottom: 10.0,left: 15.0),
+                                  child: new Icon(
+                                    Icons.format_color_text,
                                     color: Colors.blueAccent,
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          new Row(
-                            children: <Widget>[
-                              new Container(
-                                margin: EdgeInsets.only(top: 10.0,bottom: 10.0,left: 15.0),
-                                child: new Icon(
-                                  Icons.format_color_text,
-                                  color: Colors.green,
+                                new Container(
+                                  margin: EdgeInsets.only(top: 10.0,bottom: 10.0,left: 15.0),
+                                  child: new Text(
+                                    '最高温度  ℃',
+                                    style: new TextStyle(
+                                      fontSize: 16.0,
+                                      color: Colors.blueAccent,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                              new Container(
-                                margin: EdgeInsets.only(top: 10.0,bottom: 10.0,left: 15.0),
-                                child: new Text(
-                                  '最低温度  ℃',
-                                  style: new TextStyle(
-                                    fontSize: 16.0,
+                              ],
+                            ),
+                            new Row(
+                              children: <Widget>[
+                                new Container(
+                                  margin: EdgeInsets.only(top: 10.0,bottom: 10.0,left: 15.0),
+                                  child: new Icon(
+                                    Icons.format_color_text,
                                     color: Colors.green,
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          new Container(
-                            height: 200.0,
-                            width: 600.0,
-                            child: PointsLineChart.withSampleData(weekData),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-              )
-          );
-        },
-      )
+                                new Container(
+                                  margin: EdgeInsets.only(top: 10.0,bottom: 10.0,left: 15.0),
+                                  child: new Text(
+                                    '最低温度  ℃',
+                                    style: new TextStyle(
+                                      fontSize: 16.0,
+                                      color: Colors.green,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            new Container(
+                              height: 200.0,
+                              width: 600.0,
+                              child: PointsLineChart.withSampleData(weekData),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                )
+            );
+          },
+        )
     );
 
     Widget detailSection = Container(
@@ -272,9 +272,9 @@ class WeatherState extends State<WeatherWidget>{
             ),
           ),
           new Text(
-              text,
+            text,
             style: new TextStyle(
-              fontSize: 16.0
+                fontSize: 16.0
             ),
           ),
         ],
@@ -346,8 +346,8 @@ class WeatherState extends State<WeatherWidget>{
                 Container(
                   child: Text(text,
                     style: new TextStyle(
-                        fontSize: 12.0,
-                        color: Color(0xFF333333),
+                      fontSize: 12.0,
+                      color: Color(0xFF333333),
                     ),
                   ),
                   width: 320.0,
@@ -378,69 +378,85 @@ class WeatherState extends State<WeatherWidget>{
 
     Widget buildFutureItem(String data, String weatherImg, String weather,
         String temp, String windair, String windsc) {
+      String datas = data.substring(0,4)+ data.substring(5,7) + data.substring(8,10);
       return Container(
         height: 300.0,
         width: 115.0,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            new Container(
-              margin: EdgeInsets.only(bottom: 5.0),
-              child: Text(
-                data.substring(5,7) + '月' + data.substring(8,10) + '日',
-                style: TextStyle(
-                  fontSize: 18.0,
-                  color: Color(0xFF333333),
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              new Container(
+                margin: EdgeInsets.only(bottom: 5.0),
+                child: new GestureDetector(
+                 child: new OutlineButton(
+                   child: new Text(
+                     data.substring(5,7) + '月' + data.substring(8,10) + '日',
+                     style: TextStyle(
+                       color: Color(0xFF333333),
+                     ),
+                   ),
+                   onPressed: null,
+                   shape: new RoundedRectangleBorder(
+                     borderRadius: new BorderRadius.circular(30.0),
+                   ),
+                 ),
+                  onTap: (){
+                    Navigator.push( //相当于Android里面得Intent
+                      context,
+                      MaterialPageRoute(builder: (context) =>
+                        CalendarWidget(datas)
+                      ),
+                    );
+                  }
+                )
+              ),
+              Image.asset(
+                weatherImg,
+                width: 40.0,
+                height: 40.0,
+                fit: BoxFit.fill,
+              ),
+              new Container(
+                margin: EdgeInsets.only(top: 10.0),
+                child: Text(
+                  weather,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Color(0xFF333333),
+                  ),
                 ),
               ),
-            ),
-            Image.asset(
-              weatherImg,
-              width: 40.0,
-              height: 40.0,
-              fit: BoxFit.fill,
-            ),
-            new Container(
-              margin: EdgeInsets.only(top: 10.0),
-              child: Text(
-                weather,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Color(0xFF333333),
+              new Container(
+                margin: EdgeInsets.only(top: 10.0),
+                child: Text(
+                  temp,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Color(0xFF333333),
+                  ),
                 ),
               ),
-            ),
-            new Container(
-              margin: EdgeInsets.only(top: 10.0),
-              child: Text(
-                temp,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Color(0xFF333333),
+              new Container(
+                margin: EdgeInsets.only(top: 10.0),
+                child: Text(
+                  windair,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Color(0xFF333333),
+                  ),
                 ),
               ),
-            ),
-            new Container(
-              margin: EdgeInsets.only(top: 10.0),
-              child: Text(
-                windair,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Color(0xFF333333),
+              new Container(
+                margin: EdgeInsets.only(top: 5.0),
+                child: Text(
+                  windsc,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Color(0xFF333333),
+                  ),
                 ),
               ),
-            ),
-            new Container(
-              margin: EdgeInsets.only(top: 5.0),
-              child: Text(
-                windsc,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Color(0xFF333333),
-                ),
-              ),
-            ),
-           ]
+            ]
         ),
       );
     }
@@ -462,19 +478,19 @@ class WeatherState extends State<WeatherWidget>{
       if(widgets.length > 0){
         return Container(
 //          margin: EdgeInsets.only(top: 20.0),
-          color: Color(0x3399CCFF),
-          child: new Container(
-            margin: EdgeInsets.only(top:20.0,bottom: 10.0),
-            child: new Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                widgets[0],
-                widgets[1],
-                widgets[2],
-              ],
-            ),
-          )
-      );
+            color: Color(0x3399CCFF),
+            child: new Container(
+              margin: EdgeInsets.only(top:20.0,bottom: 10.0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  widgets[0],
+                  widgets[1],
+                  widgets[2],
+                ],
+              ),
+            )
+        );
       }else{
         return new Container(
             child: new Text(
@@ -519,6 +535,26 @@ class WeatherState extends State<WeatherWidget>{
       );
     }
 
+    Widget buildJsonFrom(){
+      return Container(
+        color: Colors.lightBlueAccent,
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[new Container(
+              margin: EdgeInsets.only(top: 10.0,bottom: 10.0),
+              child: new Text(
+                '气象数据来源 和风天气',
+                style: new TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.white,
+                ),
+              )
+          ),
+          ],
+        ),
+      );
+    }
+
     Widget airItem(String num,String item){
       return Container(
         height: 50.0,
@@ -552,33 +588,33 @@ class WeatherState extends State<WeatherWidget>{
     }
 
     AlertDialog dialog = new AlertDialog(
-      content: new Container(
-        color: Color(0x3399CCFF),
-        child: new Container(
-          height: 100.0,
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              new Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  airItem(weatherAir.weatherpmn,'PM2.5'),
-                  airItem(weatherAir.weatherpm10,'PM10'),
-                  airItem(weatherAir.weatherSo2,'SO2'),
-                ],
-              ),
-              new Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  airItem(weatherAir.weatheralty,'空气质量'),
-                  airItem(weatherAir.weatheraqi,'AQI'),
-                  airItem(weather.cloud,'云量'),
-                ],
-              ),
-            ],
-          )
+        content: new Container(
+            color: Color(0x3399CCFF),
+            child: new Container(
+                height: 100.0,
+                child: new Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    new Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        airItem(weatherAir.weatherpmn,'PM2.5'),
+                        airItem(weatherAir.weatherpm10,'PM10'),
+                        airItem(weatherAir.weatherSo2,'SO2'),
+                      ],
+                    ),
+                    new Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        airItem(weatherAir.weatheralty,'空气质量'),
+                        airItem(weatherAir.weatheraqi,'AQI'),
+                        airItem(weather.cloud,'云量'),
+                      ],
+                    ),
+                  ],
+                )
+            )
         )
-      )
     );
 
     Row buildItem(String str,int count){
@@ -661,20 +697,21 @@ class WeatherState extends State<WeatherWidget>{
                 crossAxisAlignment: CrossAxisAlignment.center,  //水平布局
                 children: <Widget>[
                   new Container(
-                      margin: EdgeInsets.only(top: 10.0),
-                      width: double.infinity,
-                      child: new Column(
-                        children: <Widget>[
-                          heaferSection,
-                          middleSection,
-                          bottomSection,
-                          rebuildWeekWeather(),
-                          Divider(height: 1.0, color: Colors.black,),
-                          buildWeekWeather(),
-                          dressSection,
-                        ],
-                      ),
+                    margin: EdgeInsets.only(top: 10.0),
+                    width: double.infinity,
+                    child: new Column(
+                      children: <Widget>[
+                        heaferSection,
+                        middleSection,
+                        bottomSection,
+                        rebuildWeekWeather(),
+                        Divider(height: 1.0, color: Colors.black,),
+                        buildWeekWeather(),
+                        dressSection,
+                        buildJsonFrom(),
+                      ],
                     ),
+                  ),
                 ],
               ),
             ),
