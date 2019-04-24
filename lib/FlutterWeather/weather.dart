@@ -100,7 +100,7 @@ class Weather extends StatelessWidget{
             )
           ],
         ),
-        body: new Stack(
+        body: new Stack(  //绝对布局
           children: <Widget>[
             CityWidget(),
             Positioned(

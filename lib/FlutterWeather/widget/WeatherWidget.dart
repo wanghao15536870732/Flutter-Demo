@@ -116,7 +116,7 @@ class WeatherState extends State<WeatherWidget>{
   @override
   Widget build(BuildContext context) {
 
-    Widget heaferSection = Container(
+    Widget headerSection = Container(
       margin: const EdgeInsets.all(20.0),
       child: Row(
         children: <Widget>[
@@ -136,7 +136,6 @@ class WeatherState extends State<WeatherWidget>{
                       color: Color(0xFF707070)
                   ),
                 ),
-
                 new Text(
                   weather?.cond,
                   style: new TextStyle(
@@ -383,7 +382,7 @@ class WeatherState extends State<WeatherWidget>{
         height: 300.0,
         width: 115.0,
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,  //主轴的对齐方式
             children: <Widget>[
               new Container(
                 margin: EdgeInsets.only(bottom: 5.0),
@@ -701,7 +700,7 @@ class WeatherState extends State<WeatherWidget>{
                     width: double.infinity,
                     child: new Column(
                       children: <Widget>[
-                        heaferSection,
+                        headerSection,
                         middleSection,
                         bottomSection,
                         rebuildWeekWeather(),

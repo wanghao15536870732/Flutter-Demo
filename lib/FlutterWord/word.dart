@@ -5,6 +5,7 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter_demo/FlutterWord/widget/wordWidget.dart';
 
 class Word extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(

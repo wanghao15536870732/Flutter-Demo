@@ -22,6 +22,7 @@ class _SearchWidgetState extends State<SearchWidget> {
     });
   }
 
+  //https://search.heweather.net/find?parameters&location=太&key=551f547c64b24816acfed8471215cd0e
   Future<CityList> _fetchCitys(String str) async{
     final response = await http.get('https://search.heweather.net/find?parameters&location=' +
         str +
@@ -45,7 +46,10 @@ class _SearchWidgetState extends State<SearchWidget> {
         alignment: const Alignment(0.0,-1.0),
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(color: Colors.grey[100]),
+            decoration: BoxDecoration(
+                color: Colors.grey[200],
+              borderRadius: new BorderRadius.circular(15.0)
+            ),
             child: Padding(
               padding: EdgeInsets.only(left: 18.0, right: 18.0),
 //              color: Colors.red,
@@ -68,7 +72,8 @@ class _SearchWidgetState extends State<SearchWidget> {
             padding: EdgeInsets.only(top: 40.0),
             child: ListView.builder(
               itemCount: cityList.citys.length,
-              itemBuilder: (context, index) => EntryItem(cityList.citys[index],cityList.citynames[index]),
+              itemBuilder: (context, index) =>
+                  EntryItem(cityList.citys[index],cityList.citynames[index]),
             ),
           ),
         ],

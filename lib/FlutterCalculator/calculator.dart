@@ -59,18 +59,18 @@ class CalculatorState extends State<StatefulWidget>{
 
   onNumberButtonPressed(Number number){
     var result = results.length > 0 ? results[results.length - 1] : Result();
-    if(result.firstNum == null || result.oper == null){
-      result.firstNum = number.apply(currentDisplay);
-    }else if(result.result == null) {
-      if(result.secondNum == null){
-        currentDisplay = '0';
+    if(result.firstNum == null || result.oper == null){  //第一个字符和运算符均为空
+      result.firstNum = number.apply(currentDisplay);   //那第一个字符即为currentDisplay
+    }else if(result.result == null) {  //结果为空
+      if(result.secondNum == null){ //第二个字符为空
+        currentDisplay = '0';  //显示还是为空
       }
-      result.secondNum = number.apply(currentDisplay);
-    }else{
+      result.secondNum = number.apply(currentDisplay); //现在该输入第二个字符了
+    }else{   //开始新的输入了
       var newRes = Result();
       currentDisplay = '0';
-      newRes.firstNum = number.apply(currentDisplay);
-      results.add(newRes);
+      newRes.firstNum = number.apply(currentDisplay);  //将运算好的结果作为第二次运算的第一个字符
+      results.add(newRes);  //加入到队列当中
     }
     if(results.length == 0){
       results.add(result);
