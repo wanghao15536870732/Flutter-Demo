@@ -167,28 +167,34 @@ class RandomWordState extends State<RandomWords>{
                   top: new BorderSide(color: Theme.of(context).dividerColor)
               )
           ),
-          child: new TextField(
-            controller: searchController,
-            textInputAction: TextInputAction.search,
-            onSubmitted: (String name){
-              print(name);
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => new WordWidget(name.toString())),
-              );
-              searchController.clear();
-            },
-            maxLines: 1,
-            style: new TextStyle(fontSize: 16.0,color: Colors.grey),
-            decoration: InputDecoration(
-                hintText: '查询单词',
-                hintStyle: TextStyle(fontSize: 14.0,color: Colors.grey),
-                prefixIcon: new Icon(
-                  Icons.search,
-                  color: Colors.grey,
-                  size: 20.0,
-                )
+          child: new SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                new TextField(
+                  controller: searchController,
+                  textInputAction: TextInputAction.search,
+                  onSubmitted: (String name){
+                    print(name);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => new WordWidget(name.toString())),
+                    );
+                    searchController.clear();
+                  },
+                  maxLines: 1,
+                  style: new TextStyle(fontSize: 16.0,color: Colors.grey),
+                  decoration: InputDecoration(
+                      hintText: '查询单词',
+                      hintStyle: TextStyle(fontSize: 14.0,color: Colors.grey),
+                      prefixIcon: new Icon(
+                        Icons.search,
+                        color: Colors.grey,
+                        size: 20.0,
+                      )
+                  ),
+                ),
+              ],
             ),
-          ),
+          )
         );
       });
     }
@@ -196,7 +202,7 @@ class RandomWordState extends State<RandomWords>{
     // TODO: implement build
     return new Scaffold(
       key: _scaffoldKey,
-      resizeToAvoidBottomPadding: false, //false键盘弹起不重新布局 避免挤压布局
+      resizeToAvoidBottomPadding: true, //false键盘弹起不重新布局 避免挤压布局
       floatingActionButton: FloatingActionButton.extended(
         tooltip: 'Show textfield',
         icon: Icon(Icons.add),

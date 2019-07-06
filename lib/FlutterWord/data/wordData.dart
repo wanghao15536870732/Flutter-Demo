@@ -41,7 +41,7 @@ class WordData{
    */
 
   static WordData fromMap(Map map){
-    List translations  = map['translation'];  //
+    List translations  = map['translation'];
     List explains = map['basic']['explains'];
     List webs = map['web'];
     List values;

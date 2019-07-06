@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/CircleFloatingMenu/circle_floating_menu.dart';
 import 'package:flutter_demo/CircleFloatingMenu/floating_button.dart';
 import 'package:flutter_demo/FlutterWeather/widget/CityWidget.dart';
-import 'package:flutter_demo/FlutterWord/widget/searchWidget.dart';
+import 'package:flutter_demo/FlutterWeather/widget/searchWidget.dart';
 import 'package:oktoast/oktoast.dart';
 
 void main(){
