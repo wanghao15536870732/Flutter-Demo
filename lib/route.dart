@@ -5,4 +5,8 @@ abstract class UIRoute{
   static const String flutterWeather = 'flutter_weather';
   //计算器
   static const String flutterCalculator = 'flutter_calculator';
+  //音乐
+  static const String flutterMusic = 'flutter_music';
+  //新的测试
+  static const String flutterTest = 'flutter_test';
 }

@@ -1,6 +1,9 @@
 <component name="libraryTable">
   <library name="Flutter Plugins">
-    <CLASSES />
+    <CLASSES>
+      <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/amap_location_plugin-0.2.0" />
+      <root url="file://D:/Important/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flute_music_player-0.0.6" />
+    </CLASSES>
     <JAVADOC />
     <SOURCES />
   </library>

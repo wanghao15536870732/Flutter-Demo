@@ -8,12 +8,8 @@ class Word extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Flutter Word',
-      theme: new ThemeData(
-        primaryColor: Colors.blueAccent
-      ),
-      home: new RandomWords(),
+    return new Scaffold(
+      body: new RandomWords(),
     );
   }
 }
