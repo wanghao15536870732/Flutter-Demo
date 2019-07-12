@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/FlutterWeather/chart/PointsLineChart.dart';
 import 'package:flutter_demo/FlutterWeather/chart/TimeSeriesBar.dart';
 import 'package:flutter_demo/FlutterWeather/widget/CalendarWidget.dart';
+import 'package:flutter_demo/FlutterWeather/widget/CityWidget.dart';
 import 'package:flutter_demo/FlutterWeather/widget/WeekWeather.dart';
 import 'package:flutter_demo/FlutterWeather/data/DressingData.dart';
 import 'package:flutter_demo/FlutterWeather/data/WeatherData.dart';
@@ -697,6 +698,12 @@ class WeatherState extends State<WeatherWidget>{
                 children: <Widget>[
                   new Container(
                     margin: EdgeInsets.only(top: 10.0),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: null,
+                        fit: BoxFit.cover,
+                      )
+                    ),
                     width: double.infinity,
                     child: new Column(
                       children: <Widget>[

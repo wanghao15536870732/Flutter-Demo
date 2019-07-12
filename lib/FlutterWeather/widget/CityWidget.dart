@@ -1,9 +1,13 @@
 
 import 'dart:convert';
+import 'package:amap_location_plugin/amap_location_plugin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/FlutterLocation/LocationData.dart';
 import 'package:flutter_demo/FlutterWeather/data/CityData.dart';
 import 'package:flutter_demo/FlutterWeather/widget/WeatherWidget.dart';
+import 'package:flutter_demo/FlutterWeather/widget/searchWidget.dart';
+import 'package:flutter_demo/utils/Toast.dart';
 import 'package:http/http.dart' as http;
 
 class CityWidget extends StatefulWidget{
@@ -19,13 +23,46 @@ class CityWidget extends StatefulWidget{
 
 class CityState extends State<CityWidget>{
 
+  AmapLocation _amapLocation = AmapLocation();
+  LocationData location = LocationData.empty();
+
   Set _saved = new Set<CityData>();
   //列表显示
   List<CityData> cityList = new List<CityData>();
 
+
   CityState(){
+    _amapLocation.startLocation;
     _getCityList(); //获取城市列表
+    _getLocation();
   }
+
+  void _makeToast(String msg) async{
+    await Toast.toast(context, msg);
+  }
+
+  void _getLocation() async {
+    LocationData locationDate = await _fetchLocation();
+    setState(() {
+      this.location = locationDate;
+    });
+  }
+
+  Future<LocationData> _fetchLocation() async {
+    final response = await _fetchJson();
+    if(response != null){
+      return LocationData.fromJson(json.decode(response));
+    }else{
+      return LocationData.empty();
+    }
+  }
+
+  Future<String> _fetchJson() async {
+    String location = await _amapLocation.getLocation;
+    return location;
+  }
+
+
 
   void _getCityList() async{  //async关键字声明该函数内部有代码需要延迟执行
     List<CityData> citys = await _fetchCityList();  //await关键字声明运算为延迟执行，然后return运算结果
@@ -43,7 +80,7 @@ class CityState extends State<CityWidget>{
   Future<List<CityData>> _fetchCityList() async{  //有await标记的运算，其结果值都是一个Future对象，
     final response = await http.get('https://search.heweather.net/top?group=cn&number=50&key=551f547c64b24816acfed8471215cd0e');
     List<CityData> cityList = new List<CityData>();
-    cityList.add(new CityData('定位'));
+    cityList.add(new CityData('使用GPS定位'));
     if(response.statusCode == 200){
       //解析数据
       Map<String,dynamic> result = json.decode(response.body);
@@ -65,17 +102,24 @@ class CityState extends State<CityWidget>{
         title: GestureDetector(
           child: Text(cityList[index].cityName),
           onTap: (){  //List的Item
-
+            //_getLocation();
+            location == null
+                ? _makeToast("请开启位置权限,并重新打开该应用")
+                : Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => WeatherWidget(location.city.split("市")[0])
+              ),
+            );
+            print(location.city.split("市")[0]);
           },
         ),
-        leading: new Icon(
+        trailing: new Icon(
           Icons.location_on,
         ),
         onTap: (){
           //定位转到
         },
       );
-    }else{
+    } else{
       return new ListTile(
         title: GestureDetector(
           child: Text(cityList[index].cityName),
