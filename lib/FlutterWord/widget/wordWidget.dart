@@ -20,6 +20,7 @@ class WordWidget extends StatefulWidget {
       home: new Scaffold(
         appBar: new AppBar(
           title: new Text('Word Detail'),
+
         ),
         body: new Center(
           child: new Text(Word),
@@ -69,7 +70,6 @@ class WordState extends State<WordWidget>{
 
   @override
   Widget build(BuildContext context) {
-
 
     var content = setData(wordData, word);
     new Padding(
@@ -161,9 +161,9 @@ class WordState extends State<WordWidget>{
           child: new Column(
             children: <Widget>[
               new Text(
-                  word,
+                word,
                 style: new TextStyle(
-                  fontSize: 20.0
+                    fontSize: 20.0
                 ),
               ),
               translationMsg,

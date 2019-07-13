@@ -698,12 +698,6 @@ class WeatherState extends State<WeatherWidget>{
                 children: <Widget>[
                   new Container(
                     margin: EdgeInsets.only(top: 10.0),
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: null,
-                        fit: BoxFit.cover,
-                      )
-                    ),
                     width: double.infinity,
                     child: new Column(
                       children: <Widget>[

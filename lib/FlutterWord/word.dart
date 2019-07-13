@@ -144,7 +144,8 @@ class RandomWordState extends State<RandomWords>{
               ),
               body: _buildSave(),
             );
-          }
+          },
+
       )
     );
   }
@@ -204,6 +205,7 @@ class RandomWordState extends State<RandomWords>{
         icon: Icon(Icons.add),
         label: new Text("单词"),
         onPressed: _showCityTextField,
+        heroTag: 'floatActionButton',
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat
       ,

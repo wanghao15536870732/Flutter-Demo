@@ -205,14 +205,14 @@ class _NowPlayingState extends State<NowPlaying> {
                   onPressed: () {
                     mute(!isMuted);
                   }),
-              // new IconButton(
-              //     onPressed: () => mute(true),
-              //     icon: new Icon(Icons.headset_off),
-              //     color: Colors.cyan),
-              // new IconButton(
-              //     onPressed: () => mute(false),
-              //     icon: new Icon(Icons.headset),
-              //     color: Colors.cyan),
+//               new IconButton(
+//                   onPressed: () => mute(true),
+//                   icon: new Icon(Icons.headset_off),
+//                   color: Colors.cyan),
+//               new IconButton(
+//                   onPressed: () => mute(false),
+//                   icon: new Icon(Icons.headset),
+//                   color: Colors.cyan),
             ],
           ),
         ]));
