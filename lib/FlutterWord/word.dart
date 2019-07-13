@@ -8,8 +8,10 @@ class Word extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new RandomWords(),
+    return new Stack(
+      children: <Widget>[
+        new RandomWords(),
+      ],
     );
   }
 }
@@ -205,12 +207,20 @@ class RandomWordState extends State<RandomWords>{
         icon: Icon(Icons.add),
         label: new Text("单词"),
         onPressed: _showCityTextField,
-        heroTag: 'floatActionButton',
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat
       ,
       appBar: new AppBar(
         title: new Text('Start Word Generator'),
+        leading: new IconButton(
+            icon: new Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ) ,
+            onPressed: (){
+              Navigator.of(context).pop();
+            }
+        ),
         actions: <Widget>[
           new IconButton(
               icon: new Icon(Icons.list),

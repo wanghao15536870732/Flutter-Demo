@@ -8,6 +8,6 @@
 
 ## 简单单词翻译
 
-||||
-|:--:|:--:|:--:|
-|![壳图20190302-223407.jpg](https://upload-images.jianshu.io/upload_images/9140378-4f3eda1358453f67.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|![壳图20190302-223413.jpg](https://upload-images.jianshu.io/upload_images/9140378-d2e5620d1cd37060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|![壳图20190302-223418.jpg](https://upload-images.jianshu.io/upload_images/9140378-7c64ea090cce5e2c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|
+|||||
+|:--:|:--:|:--:|:--:|
+|![壳图20190302-223407.jpg](https://upload-images.jianshu.io/upload_images/9140378-4f3eda1358453f67.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|![壳图20190302-223413.jpg](https://upload-images.jianshu.io/upload_images/9140378-d2e5620d1cd37060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|![壳图20190302-223418.jpg](https://upload-images.jianshu.io/upload_images/9140378-7c64ea090cce5e2c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|![show.png](https://upload-images.jianshu.io/upload_images/9140378-b295a02cdde492bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|
