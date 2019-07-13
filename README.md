@@ -1,4 +1,4 @@
-## 酷欧天气Flutter版
+## Flutter Practice
 
 ![Flutter version](https://img.shields.io/badge/flutter-1.0.0-orange.svg)
 ![Dart version](https://img.shields.io/badge/dart-2.1.0-orange.svg)
@@ -11,6 +11,8 @@
 ![font__awesome__flutter version](https://img.shields.io/badge/font__awesome__flutter-8.4.0-green.svg)
 ![amap__location__plugin version](https://img.shields.io/badge/amap__location__plugin-0.2.0-green.svg)
 ![flute__music__player version](https://img.shields.io/badge/flute__music__player-0.0.6-green.svg)
+
+## 酷欧天气Flutter版
 
 |||||
 |:--:|:--:|:--:|:--:|

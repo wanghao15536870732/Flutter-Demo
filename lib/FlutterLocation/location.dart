@@ -34,6 +34,7 @@ class Location extends StatefulWidget{
 
 class LocationState extends State<Location>{
 
+  Offset _offset = Offset.zero; // changed
   AmapLocation _amapLocation = AmapLocation();
   String cityName;
   LocationData location = LocationData.empty();
@@ -92,6 +93,19 @@ class LocationState extends State<Location>{
 
   @override
   Widget build(BuildContext context) {
-    return buildBody();
+    return Transform(
+      transform: Matrix4.identity()
+      ..setEntry(3, 2, 0.001)
+      ..rotateX(0.01 * _offset.dy)
+      ..rotateY(-0.01 * _offset.dx),
+      alignment: FractionalOffset.center,
+      child: GestureDetector(
+        // new
+        onPanUpdate: (details) =>
+            setState(() => _offset += details.delta), //与屏幕接触并移动的指针再次移动
+        onDoubleTap: () => setState(() => _offset = Offset.zero),
+        child: buildBody(),
+      )
+    );
   }
 }
