@@ -1,5 +1,16 @@
 ## 酷欧天气Flutter版
 
+![Flutter version](https://img.shields.io/badge/flutter-1.0.0-orange.svg)
+![Dart version](https://img.shields.io/badge/dart-2.1.0-orange.svg)
+
+![http version](https://img.shields.io/badge/http-0.12.0-green.svg)
+![cupertino__icons version](https://img.shields.io/badge/cupertino__icons-0.1.2-green.svg)
+![oktoast version](https://img.shields.io/badge/oktoast-2.0.0-green.svg)
+![english__words version](https://img.shields.io/badge/english__words-3.1.3-green.svg)
+![charts__common version](https://img.shields.io/badge/charts__common-0.5.0-green.svg)
+![font__awesome__flutter version](https://img.shields.io/badge/font__awesome__flutter-8.4.0-green.svg)
+![amap__location__plugin version](https://img.shields.io/badge/amap__location__plugin-0.2.0-green.svg)
+![flute__music__player version](https://img.shields.io/badge/flute__music__player-0.0.6-green.svg)
 
 |||||
 |:--:|:--:|:--:|:--:|
