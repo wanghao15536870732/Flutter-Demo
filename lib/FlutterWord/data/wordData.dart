@@ -98,6 +98,8 @@ class WordData{
 
 
 
+
+
   factory WordData.empty(){
     return WordData(
       transRes: "",

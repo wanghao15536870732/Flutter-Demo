@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/FlutterWord/data/sampleData.dart';
 import 'package:flutter_demo/FlutterWord/data/wordData.dart';
 import 'package:http/http.dart' as http;
+import 'package:audioplayer/audioplayer.dart';
 
 class WordWidget extends StatefulWidget {
 
@@ -36,41 +38,100 @@ class WordWidget extends StatefulWidget {
   }
 }
 
-
 class WordState extends State<WordWidget>{
 
+  //当前选中的单词
   String word;
-
+  //当前单词的id
+  int code;
+  //初始化单词数据解析类
   WordData wordData = WordData.empty();
+  //单词例句
+  SampleData samples = SampleData.empty();
+  //音频播放器
+  AudioPlayer audioPlayer = new AudioPlayer();
+  //音乐播放器状态
+  AudioPlayerState playerState;
+  //暂停时，音频播放的位置
+  Duration position;
 
   WordState(String word){
     this.word = word;
     _getWordDetail();
   }
 
-
   void _getWordDetail() async{
     WordData data = await _fetchWordDetail();
+    int wordCode = await _fetchWordCode();
+    //Toast.toast(context, wordCode.toString());
+    //Toast.toast(context, samples.toString());
     setState(() {
       wordData = data;
+      code = wordCode;
+    });
+    SampleData samples = await _fetchSamples();
+    setState(() {
+      this.samples = samples;
     });
   }
 
   Future<WordData> _fetchWordDetail() async{
-    final respose = await http.get(
+    final response = await http.get(
         'http://fanyi.youdao.com/openapi.do?keyfrom=zhaotranslator&key=1681711370&type=data&doctype=json&version=1.1&q='
             + word
     );
-    if(respose.statusCode == 200){
-      return WordData.fromJson(json.decode(respose.body));
+    if(response.statusCode == 200){
+      return WordData.fromJson(json.decode(response.body));
     }else{
       return WordData.empty();
     }
   }
 
+  Future<int> _fetchWordCode() async{
+    final response = await http.get(
+      "https://api.shanbay.com/bdc/search/?word=" + word
+    );
+    Map<String,dynamic> result = json.decode(response.body);
+    int code = result['data']['id'];
+    return code;
+  }
+
+  Future<SampleData> _fetchSamples() async{
+    final response = await http.get(
+      "https://api.shanbay.com/bdc/example/?vocabulary_id=" + code.toString() + "&type＝sys"
+    );
+    if(response.statusCode == 200){
+      return SampleData.fromJson(json.decode(response.body));
+    }else{
+      return SampleData.empty();
+    }
+  }
+
+  void playAudio(String language) async{
+    await play(language);
+  }
+
+  Future<void> play(String language) async{
+    String usAudioUrl = "http://media.shanbay.com/audio/" + language + "/" + word + ".mp3";
+    await audioPlayer.play(usAudioUrl);
+    setState(() => playerState = AudioPlayerState.PLAYING);
+  }
+
+  Future<void> pause() async {
+    await audioPlayer.pause();
+    setState(() => playerState = AudioPlayerState.PAUSED);
+  }
+
+  Future<void> stop() async {
+    await audioPlayer.stop();
+    setState(() {
+      playerState = AudioPlayerState.STOPPED;
+      position = new Duration();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-
     var content = setData(wordData, word);
     new Padding(
         padding: const EdgeInsets.only(
@@ -114,8 +175,34 @@ class WordState extends State<WordWidget>{
         ),
         new Divider(),
         new Text('普通发声：' + data.phonetic),
-        new Text('美式发音：' + data.us),
-        new Text('英式发音：' + data.uk),
+        new Row(
+          children: <Widget>[
+            new Text('美式发音：' + data.us),
+            new IconButton(
+              icon: new Icon(
+                Icons.surround_sound,
+                color: Colors.pinkAccent,
+              ),
+              onPressed: (){
+                playAudio("us");
+              },
+            )
+          ],
+        ),
+        new Row(
+          children: <Widget>[
+            new Text('英式发音：' + data.uk),
+            new IconButton(
+              icon: new Icon(
+                Icons.surround_sound,
+                color: Colors.blueAccent,
+              ),
+              onPressed: (){
+                playAudio("uk");
+              },
+            )
+          ],
+        ),
         new Divider(),
         new Text(
           '翻译解析：',
@@ -150,6 +237,30 @@ class WordState extends State<WordWidget>{
       ],
     );
 
+    Widget sample_index(String first,String word,String last,String translation){
+      return new Container(
+        margin: EdgeInsets.only(left: 15.0,top: 5.0),
+        child: new Text(
+          first + " " + word + "" +  last + "\n" + translation,
+          style: new TextStyle(
+            fontSize: 14.0,
+            color: Colors.black,
+          ),
+        ),
+      );
+    }
+
+    var translationSamples = samples.annotation.length > 0 ? new Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        new Divider(),
+        new Text("单词例句:"),
+        sample_index(samples.firsts[0],this.word,samples.lasts[0], samples.translations[0]),
+        sample_index(samples.firsts[1],this.word,samples.lasts[1], samples.translations[1]),
+        sample_index(samples.firsts[2],this.word,samples.lasts[2], samples.translations[2]),
+      ],
+    ) : new Text("...");
     return new Padding(
         padding: const EdgeInsets.only(
           top: 10.0,
@@ -158,16 +269,31 @@ class WordState extends State<WordWidget>{
           bottom: 10.0,
         ),
       child: new Scrollbar(
-          child: new Column(
-            children: <Widget>[
-              new Text(
-                word,
-                style: new TextStyle(
-                    fontSize: 20.0
-                ),
+          child: wordData.webs == "" ? new Center(
+            child: new Text(
+              "正在加载...",
+              style: new TextStyle(
+                fontSize: 16.0,
+                color: Colors.black,
               ),
-              translationMsg,
-            ],
+            ),
+          ) : new SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: new Container(
+              padding: EdgeInsets.only(bottom: 10.0),
+              child: new Column(
+                children: <Widget>[
+                  new Text(
+                    word,
+                    style: new TextStyle(
+                        fontSize: 20.0
+                    ),
+                  ),
+                  translationMsg,
+                  translationSamples,
+                ],
+              ),
+            ) ,
           )
       ),
     );

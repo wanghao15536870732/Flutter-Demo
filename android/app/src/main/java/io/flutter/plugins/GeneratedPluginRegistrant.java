@@ -2,6 +2,7 @@ package io.flutter.plugins;
 
 import io.flutter.plugin.common.PluginRegistry;
 import com.green.kinsomy.amaplocation.AmapLocationPlugin;
+import bz.rxla.audioplayer.AudioplayerPlugin;
 import com.mtechviral.musicfinder.MusicFinderPlugin;
 
 /**
@@ -13,6 +14,7 @@ public final class GeneratedPluginRegistrant {
       return;
     }
     AmapLocationPlugin.registerWith(registry.registrarFor("com.green.kinsomy.amaplocation.AmapLocationPlugin"));
+    AudioplayerPlugin.registerWith(registry.registrarFor("bz.rxla.audioplayer.AudioplayerPlugin"));
     MusicFinderPlugin.registerWith(registry.registrarFor("com.mtechviral.musicfinder.MusicFinderPlugin"));
   }
 
