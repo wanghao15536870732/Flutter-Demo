@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/FlutterCalculator/calculator.dart';
-import 'package:flutter_demo/FlutterLocation/location.dart';
+import 'package:flutter_demo/FlutterLocation/DouBanListView.dart';
 import 'package:flutter_demo/FlutterMusic/music.dart';
 import 'package:flutter_demo/FlutterWeather/weather.dart';
 import 'package:flutter_demo/FlutterWord/word.dart';
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           UIRoute.flutterWeather:(_) => Weather(),
           UIRoute.flutterCalculator:(_) => Calculator(),
           UIRoute.flutterMusic:(_) => MusicPage(),
-          UIRoute.flutterTest:(_) => LocationPage(),
+          UIRoute.flutterTest:(_) => DouBanListView(),
         },
       ),
     );
@@ -188,8 +188,8 @@ final List<_MenuData> menus = [
     routeName: UIRoute.flutterMusic,
   ),
   const _MenuData(
-    title: 'Flutter Test',
-    icon: Icons.tag_faces,
+    title: 'Douban Movie',
+    icon: Icons.movie,
     routeName: UIRoute.flutterTest,
   )
 ];

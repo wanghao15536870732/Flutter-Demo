@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/FlutterLocation/LocationData.dart';
 import 'package:flutter_demo/FlutterWeather/data/CityData.dart';
 import 'package:flutter_demo/FlutterWeather/widget/WeatherWidget.dart';
-import 'package:flutter_demo/FlutterWeather/widget/searchWidget.dart';
 import 'package:flutter_demo/utils/Toast.dart';
 import 'package:http/http.dart' as http;
 

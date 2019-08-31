@@ -39,7 +39,7 @@ class Toast{
       //重新绘制UI,类似setState
       _overlayEntry.markNeedsBuild();
     }
-    await Future.delayed(Duration(milliseconds: 2000));  //等待两秒
+    await Future.delayed(Duration(milliseconds: 3000));  //等待两秒
 
     //2秒后 消失
     if(DateTime.now().difference(_startedTime).inMilliseconds >= 2000){
