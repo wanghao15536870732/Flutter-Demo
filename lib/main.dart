@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/FlutterCalculator/calculator.dart';
-import 'package:flutter_demo/FlutterLocation/DouBanListView.dart';
+import 'package:flutter_demo/FlutterDouBanMovie/DouBanListView.dart';
 import 'package:flutter_demo/FlutterMusic/music.dart';
 import 'package:flutter_demo/FlutterWeather/weather.dart';
 import 'package:flutter_demo/FlutterWord/word.dart';

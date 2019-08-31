@@ -4,6 +4,8 @@ import io.flutter.plugin.common.PluginRegistry;
 import com.green.kinsomy.amaplocation.AmapLocationPlugin;
 import bz.rxla.audioplayer.AudioplayerPlugin;
 import com.mtechviral.musicfinder.MusicFinderPlugin;
+import io.flutter.plugins.pathprovider.PathProviderPlugin;
+import com.tekartik.sqflite.SqflitePlugin;
 
 /**
  * Generated file. Do not edit.
@@ -16,6 +18,8 @@ public final class GeneratedPluginRegistrant {
     AmapLocationPlugin.registerWith(registry.registrarFor("com.green.kinsomy.amaplocation.AmapLocationPlugin"));
     AudioplayerPlugin.registerWith(registry.registrarFor("bz.rxla.audioplayer.AudioplayerPlugin"));
     MusicFinderPlugin.registerWith(registry.registrarFor("com.mtechviral.musicfinder.MusicFinderPlugin"));
+    PathProviderPlugin.registerWith(registry.registrarFor("io.flutter.plugins.pathprovider.PathProviderPlugin"));
+    SqflitePlugin.registerWith(registry.registrarFor("com.tekartik.sqflite.SqflitePlugin"));
   }
 
   private static boolean alreadyRegisteredWith(PluginRegistry registry) {

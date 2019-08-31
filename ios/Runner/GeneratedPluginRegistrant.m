@@ -6,6 +6,8 @@
 #import <amap_location_plugin/AmapLocationPlugin.h>
 #import <audioplayer/AudioplayerPlugin.h>
 #import <flute_music_player/MusicFinderPlugin.h>
+#import <path_provider/PathProviderPlugin.h>
+#import <sqflite/SqflitePlugin.h>
 
 @implementation GeneratedPluginRegistrant
 
@@ -13,6 +15,8 @@
   [AmapLocationPlugin registerWithRegistrar:[registry registrarForPlugin:@"AmapLocationPlugin"]];
   [AudioplayerPlugin registerWithRegistrar:[registry registrarForPlugin:@"AudioplayerPlugin"]];
   [MusicFinderPlugin registerWithRegistrar:[registry registrarForPlugin:@"MusicFinderPlugin"]];
+  [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
+  [SqflitePlugin registerWithRegistrar:[registry registrarForPlugin:@"SqflitePlugin"]];
 }
 
 @end
