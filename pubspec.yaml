@@ -33,7 +33,9 @@ dependencies:
   flute_music_player: ^0.0.6
   audioplayer: ^0.5.2
   palette_generator: ^0.1.1
-  cached_network_image: ^0.6.1
+  video_player: ^0.6.0
+  chewie: ^0.7.0
+  flutter_webview_plugin: ^0.2.1
 
 dev_dependencies:
   flutter_test:

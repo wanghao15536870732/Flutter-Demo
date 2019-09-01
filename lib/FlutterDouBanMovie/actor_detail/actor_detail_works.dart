@@ -82,7 +82,7 @@ class ActorDetailWorks extends StatelessWidget{
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                new RatingBar(work.movie.rating.average,12.0),
+                new RatingBar(work.movie.rating.average,12.0,Colors.grey),
               ],
             )
           ],

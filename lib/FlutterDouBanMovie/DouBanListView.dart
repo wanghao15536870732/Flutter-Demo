@@ -121,13 +121,14 @@ class DouBanState extends State<DouBanListView> with AutomaticKeepAliveClientMix
     bool alreadySaved = _saved.contains(subject);
     var imgUrl = subject['images']['medium'];
     var title = subject['title'];
+    var year = subject['year'];
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(5.0),
       child: Row(
         children: <Widget>[
           new Hero(
-              tag: title,
+              tag: 'tag$title$year',
               child: getImage(imgUrl),
           ),
           Expanded(
@@ -184,7 +185,7 @@ class DouBanState extends State<DouBanListView> with AutomaticKeepAliveClientMix
 
   getStaring(var stars) {
     return Row(
-      children: <Widget>[RatingBar(stars,18.0), Text('$stars')],
+      children: <Widget>[RatingBar(stars,18.0,Colors.grey), Text('$stars')],
     );
   }
 
@@ -197,7 +198,7 @@ class DouBanState extends State<DouBanListView> with AutomaticKeepAliveClientMix
       child: Column(
         children: <Widget>[
           getTitleView(subject),
-          RatingBar(start,18.0),
+          RatingBar(start,18.0,Colors.grey),
           DescWidget(subject)
         ],
       ),
@@ -269,7 +270,8 @@ class DescWidget extends StatelessWidget {
 class RatingBar extends StatelessWidget {
   double stars;
   double size;
-  RatingBar(this.stars,this.size);
+  Color color;
+  RatingBar(this.stars,this.size,this.color);
 
   @override
   Widget build(BuildContext context) {
@@ -311,7 +313,7 @@ class RatingBar extends StatelessWidget {
     startList.add(Text(
       '$stars',
       style: TextStyle(
-        color: Colors.grey,
+        color: color,
         fontSize: size,
       ),
     ));

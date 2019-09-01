@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_demo/FlutterDouBanMovie/model/movie_actor_detail.dart';
 import 'dart:ui' as ui;
@@ -15,6 +14,16 @@ class ActorDetailHeader extends StatelessWidget{
   double width = MediaQueryData.fromWindow(ui.window).size.width;
   double height = MediaQueryData.fromWindow(ui.window).padding.top;
 
+  String getProfessions(List<String> professions){
+    StringBuffer sb = new StringBuffer();
+    for(var i = 0;i < professions.length;i ++){
+      if(professions[i] != "") {
+        sb.write(professions[i]);
+        sb.write(" / ");
+      }
+    }
+    return sb.toString();
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -36,7 +45,7 @@ class ActorDetailHeader extends StatelessWidget{
               width: width,
               height: 218.0 + height,
               padding:
-              EdgeInsets.fromLTRB(30, 54 + height, 10, 20),
+              EdgeInsets.fromLTRB(30, 34 + height, 10, 20),
               color: Colors.transparent,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +59,15 @@ class ActorDetailHeader extends StatelessWidget{
                       ),
                   ),
                   SizedBox(height: 10,),
-                  Text(actorDetail.name, style:TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: coverColor,))
+                  Text(actorDetail.name, style:TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white70,)),
+                  actorDetail.professions.length > 0 ?
+                  Text(
+                    getProfessions(actorDetail.professions),
+                    style:TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white70,
+                    )) : null,
                 ],
               )),
         ),

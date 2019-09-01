@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/FlutterDouBanMovie/actor_detail/actor_detail_header.dart';
+import 'package:flutter_demo/FlutterDouBanMovie/actor_detail/actor_detail_photo.dart';
 import 'package:flutter_demo/FlutterDouBanMovie/actor_detail/actor_detail_works.dart';
 import 'package:flutter_demo/FlutterDouBanMovie/model/movie_actor_detail.dart';
 import 'package:flutter_demo/FlutterDouBanMovie/movie/movie_summery_view.dart';
@@ -74,18 +74,19 @@ class _ActorDetailViewState extends State<ActorDetailView> {
                     children: <Widget>[
                       ActorDetailHeader(actorDetail,pageColor),
                       Container(
-                        margin: EdgeInsets.only(top: 10.0,left: 10.0),
+                        margin: EdgeInsets.only(top: 10.0,left: 15.0),
                         child: Text(
                           "简介",
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 18.0,
+                            fontSize: 16.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                       MovieSummaryView(actorDetail.summary,isSummaryUnfold,changeSummaryMaxLines),
                       ActorDetailWorks(actorDetail.works),
+                      ActorDetailPhoto(actorId: actorDetail.id,photos: actorDetail.photos,title: "相册",horizontal: 15.0,trailers: [],bloopers: [],),
                     ],
                   ),
                 )
