@@ -8,7 +8,6 @@ import 'package:flutter_demo/FlutterDouBanMovie/model/MovieTrailer.dart';
 import 'package:flutter_demo/FlutterDouBanMovie/model/movie_comment_item.dart';
 import 'package:flutter_demo/FlutterDouBanMovie/model/movie_photo.dart';
 import 'package:flutter_demo/FlutterDouBanMovie/movie/movie_detail_view.dart';
-import 'package:flutter_demo/FlutterDouBanMovie/movie/movie_play.dart';
 import 'package:flutter_demo/FlutterDouBanMovie/movie/movie_summery_view.dart';
 import 'package:flutter_demo/FlutterDouBanMovie/movie/movie_webview.dart';
 import 'package:http/http.dart' as http;
@@ -57,7 +56,8 @@ class DouBanDetailState extends State<DouBanDetailScreen>{
         "https://api.douban.com/v2/movie/subject/" + movieId +
             "?apikey=0df993c66c0c636e29ecbb5344252a4a");
     Map<String,dynamic> data = json.decode(response.body);
-    String videoUrl = data['trailer_urls'][0];
+    String videoUrl = data['alt'];
+    print(videoUrl);
     List<MovieCommentItem> items = await _fetchCommentItem(data);
     List<MovieTrailer> trailers = MovieTrailerList.fromJson(data['trailers']).trailers;
     List<MovieTrailer> bloopers = MovieTrailerList.fromJson(data['bloopers']).trailers;
@@ -263,7 +263,7 @@ class DouBanDetailState extends State<DouBanDetailScreen>{
                 onTap: (){
                   print(videoUrl);
                   videoUrl != null ? Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MovieWebViewPage(title: subject['title'],))): print("videoUrl is null");
+                      MaterialPageRoute(builder: (context) => MovieWebViewPage(title: subject['title'],movieUrl: this.videoUrl,))): print("videoUrl is null");
                 },
                 child: Container(
                   height: 40.0,

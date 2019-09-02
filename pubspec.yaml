@@ -35,7 +35,7 @@ dependencies:
   palette_generator: ^0.1.1
   video_player: ^0.6.0
   chewie: ^0.7.0
-  flutter_webview_plugin: ^0.2.1
+  flutter_webview_plugin: ^0.2.0
 
 dev_dependencies:
   flutter_test:
