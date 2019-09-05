@@ -36,11 +36,11 @@ class DouBanState extends State<DouBanListView> with AutomaticKeepAliveClientMix
   @override
   Widget build(BuildContext context) {
     return  new Scaffold(
-      appBar: new AppBar(
-        title: new Text("豆瓣电影Top250"),
-      ),
       body: new Container(
-        child: getListViewContainer(),
+        child: Container(
+          margin: EdgeInsets.only(top: 105.0),
+          child: getListViewContainer(),
+        ),
       ),
     );
   }

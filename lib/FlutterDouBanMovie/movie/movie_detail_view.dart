@@ -25,12 +25,6 @@ class MovieDetailView extends StatelessWidget {
             ),
           ),
         ),
-        new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            RatingBar(start,18.0,Colors.grey),
-          ],
-        ),
         new Container(
           margin: EdgeInsets.only(right: 10.0,left: 10.0,top: 5.0),
           child: DescWidget(subject),
