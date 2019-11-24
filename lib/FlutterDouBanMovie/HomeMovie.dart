@@ -225,7 +225,13 @@ class _HomeState extends State<MovieHome> with SingleTickerProviderStateMixin{
                   ],
                 ),
               ),
-              new Text("年度榜单"),
+              new Text(
+                  "年度榜单",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16.0,
+                ),
+              ),
             ],
           )
         ),

@@ -226,6 +226,13 @@
             </list>
           </value>
         </entry>
+        <entry key="sliding_up_panel">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/sliding_up_panel-0.3.6/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="source_span">
           <value>
             <list>
@@ -285,7 +292,7 @@
         <entry key="video_player">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.2+5/lib" />
+              <option value="$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.3+1/lib" />
             </list>
           </value>
         </entry>
@@ -320,6 +327,7 @@
       <root url="file://$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/quiver-2.0.5/lib" />
       <root url="file://$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/random_pk-0.0.3/lib" />
       <root url="file://$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/screen-0.0.5/lib" />
+      <root url="file://$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/sliding_up_panel-0.3.6/lib" />
       <root url="file://$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/source_span-1.5.5/lib" />
       <root url="file://$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/stack_trace-1.9.3/lib" />
       <root url="file://$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/stream_channel-2.0.0/lib" />
@@ -328,7 +336,7 @@
       <root url="file://$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/test_api-0.2.5/lib" />
       <root url="file://$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/typed_data-1.1.6/lib" />
       <root url="file://$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/vector_math-2.0.8/lib" />
-      <root url="file://$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.2+5/lib" />
+      <root url="file://$PROJECT_DIR$/../../Flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.3+1/lib" />
       <root url="file://$PROJECT_DIR$/../../Flutter/flutter/bin/cache/pkg/sky_engine/lib" />
       <root url="file://$PROJECT_DIR$/../../Flutter/flutter/packages/flutter/lib" />
       <root url="file://$PROJECT_DIR$/../../Flutter/flutter/packages/flutter_localizations/lib" />

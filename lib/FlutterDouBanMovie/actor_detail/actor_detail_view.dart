@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:demoflutter/FlutterDouBanMovie/model/movie_actor_detail.dart';
 import 'package:demoflutter/FlutterDouBanMovie/movie/movie_summery_view.dart';
+import 'package:demoflutter/utils/Toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;

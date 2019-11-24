@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:audioplayer/audioplayer.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 // ignore: must_be_immutable
 class WordWidget extends StatefulWidget {
@@ -133,17 +134,6 @@ class WordState extends State<WordWidget>{
   @override
   Widget build(BuildContext context) {
     var content = setData(wordData, word);
-    new Padding(
-        padding: const EdgeInsets.only(
-          top: 10.0,
-          left: 10.0,
-          right: 10.0,
-          bottom: 10.0,
-        ),
-      child: new Scrollbar(
-          child: content,
-      ),
-    );
 
     // TODO: implement build
     return new Scaffold(
@@ -161,6 +151,11 @@ class WordState extends State<WordWidget>{
   }
 
   setData(WordData data,String word){
+
+    PanelController panel = new PanelController();
+    double offsetDistance = 0.0;
+    double offsetY = 0;
+
     var translationMsg = new Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -254,46 +249,88 @@ class WordState extends State<WordWidget>{
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        new Text("单词例句:"),
         sampleIndex(samples.firsts[0],this.word,samples.lasts[0], samples.translations[0]),
+        new Divider(),
         sampleIndex(samples.firsts[1],this.word,samples.lasts[1], samples.translations[1]),
+        new Divider(),
         sampleIndex(samples.firsts[2],this.word,samples.lasts[2], samples.translations[2]),
       ],
     ) : new Text("...");
+
     return new Padding(
         padding: const EdgeInsets.only(
-          top: 10.0,
           left: 10.0,
+          top: 10.0,
           right: 10.0,
           bottom: 10.0,
         ),
-      child: new Scrollbar(
-          child: wordData.webs == "" ? new Center(
-            child: new Text(
-              "正在加载...",
-              style: new TextStyle(
-                fontSize: 16.0,
-                color: Colors.black,
-              ),
+      child: SlidingUpPanel(
+        controller:panel,
+        minHeight: 60.0,
+        maxHeight: 350.0,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24.0),
+          topRight: Radius.circular(24.0),
+        ),
+        collapsed: new Center(
+          child: new Text(
+            "向上滑动以查看更多",
+            style: TextStyle(
+              color: Colors.blueGrey,
+              fontSize: 18.0,
             ),
-          ) : new SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: new Container(
-              padding: EdgeInsets.only(bottom: 10.0),
-              child: new Column(
-                children: <Widget>[
-                  new Text(
-                    word,
-                    style: new TextStyle(
-                        fontSize: 20.0
+          ),
+        ),
+        body: new Scrollbar(
+            child: wordData.webs == "" ? new Center(
+              child: new Text(
+                "正在加载...",
+                style: new TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.black,
+                ),
+              ),
+            ) : new SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: new Container(
+                padding: EdgeInsets.only(bottom: 10.0,left: 20.0),
+                child: new Column(
+                  children: <Widget>[
+                    new Text(
+                      word,
+                      style: new TextStyle(
+                          fontSize: 20.0
+                      ),
+                    ),
+                    translationMsg,
+                  ],
+                ),
+              ) ,
+            )
+        ),
+        panel: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              new Container(
+                height: 60.0,
+              ),
+              new Container(
+                height: 40.0,
+                child: new Center(
+                  child: new Text("单词例句",
+                    style: TextStyle(
+                      color: Colors.blueGrey,
+                      fontSize: 18.0,
                     ),
                   ),
-                  translationMsg,
-                  translationSamples,
-                ],
+                ),
               ),
-            ) ,
-          )
+              translationSamples
+            ],
+          ),
+        ),
       ),
     );
   }

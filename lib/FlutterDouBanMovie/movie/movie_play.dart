@@ -77,8 +77,8 @@ class MoviePlayState extends State<MoviePlay> {
       appBar: AppBar(
         title: Text("视频播放"),
       ),
-      body:
-      new Center(
+      body: new SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: new Chewie(
           controller: chewieController,
         ),
