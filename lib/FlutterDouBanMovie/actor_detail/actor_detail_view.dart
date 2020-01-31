@@ -108,5 +108,4 @@ class _ActorDetailViewState extends State<ActorDetailView> {
       ),
     );
   }
-
 }

@@ -8,6 +8,8 @@ import 'FlutterMusic/music.dart';
 import 'FlutterWeather/weather.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'nCovByDX/news/news_home_page.dart';
+
 void main() => runApp(MyApp());
 
 
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
-        supportedLocales: [
+        supportedLocales: [,,bvn,
           const Locale('zh','CH'),
           const Locale('en','US'),
         ],
@@ -39,7 +41,8 @@ class MyApp extends StatelessWidget {
           UIRoute.flutterWeather:(_) => Weather(),
           UIRoute.flutterCalculator:(_) => Calculator(),
           UIRoute.flutterMusic:(_) => MusicPage(),
-          UIRoute.flutterTest:(_) => MovieHome(),
+          UIRoute.flutterMovie:(_) => MovieHome(),
+          UIRoute.flutterNCov:(_) => NewsHomePage(title: "全国新型肺炎疫情实时动态"),
         },
       ),
     );
@@ -201,6 +204,11 @@ final List<_MenuData> menus = [
   const _MenuData(
     title: 'Douban Movie',
     icon: Icons.movie,
-    routeName: UIRoute.flutterTest,
+    routeName: UIRoute.flutterMovie,
+  ),
+  const _MenuData(
+    title: 'Sars Dynamic',
+    icon: Icons.whatshot,
+    routeName: UIRoute.flutterNCov,
   )
 ];

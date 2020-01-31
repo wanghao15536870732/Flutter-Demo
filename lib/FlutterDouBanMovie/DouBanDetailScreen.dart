@@ -264,7 +264,8 @@ class DouBanDetailState extends State<DouBanDetailScreen>{
                 onTap: (){
                   print(videoUrl);
                   videoUrl != null ? Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MovieWebViewPage(title: subject['title'],movieUrl: this.videoUrl,))): print("videoUrl is null");
+                      MaterialPageRoute(builder: (context) => MovieWebViewPage(
+                        title: subject['title'],movieUrl: this.videoUrl,))): print("videoUrl is null");
                 },
                 child: Container(
                   height: 40.0,

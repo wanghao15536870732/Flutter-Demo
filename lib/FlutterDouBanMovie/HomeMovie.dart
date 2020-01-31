@@ -43,7 +43,6 @@ class _HomeState extends State<MovieHome> with SingleTickerProviderStateMixin{
 
   @override
   Widget build(BuildContext context) {
-
     getTop250(var subject1,var subject2,var subject3,String title1,String title2){
       return Container(
         child: Container(
