@@ -153,8 +153,6 @@ class WordState extends State<WordWidget>{
   setData(WordData data,String word){
 
     PanelController panel = new PanelController();
-    double offsetDistance = 0.0;
-    double offsetY = 0;
 
     var translationMsg = new Column(
       crossAxisAlignment: CrossAxisAlignment.start,

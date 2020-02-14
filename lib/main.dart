@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
-        supportedLocales: [,,bvn,
+        supportedLocales: [
           const Locale('zh','CH'),
           const Locale('en','US'),
         ],
