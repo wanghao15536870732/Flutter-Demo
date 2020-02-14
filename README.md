@@ -28,10 +28,13 @@
 [![chewie](https://img.shields.io/badge/chewie-0.7.0-brightgreen)](https://pub.dev/packages/chewie)
 [![flutter_webview_plugin](https://img.shields.io/badge/flutter__webview__plugin-0.2.0-brightgreen)](https://pub.dev/packages/flutter_webview_plugin)
 
-|||||
-|:--:|:--:|:--:|:--:|
-|![image.png](https://upload-images.jianshu.io/upload_images/9140378-8eba4b7045112c33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340)|![image.png](https://upload-images.jianshu.io/upload_images/9140378-e9caaf628276ddbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340)|![image.png](https://upload-images.jianshu.io/upload_images/9140378-14d4c58cd50c6362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340)|![image.png](https://upload-images.jianshu.io/upload_images/9140378-4cdaa5257bfbc83a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340)|
-|![image.png](https://upload-images.jianshu.io/upload_images/9140378-a09451a18f77b865.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340)|![image.png](https://upload-images.jianshu.io/upload_images/9140378-5c8cd7dbb601d5c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340)|![image.png](https://upload-images.jianshu.io/upload_images/9140378-3e360349b91998dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340)|![image.png](https://upload-images.jianshu.io/upload_images/9140378-8d64b436458af732.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340)|
+> 所用数据来源于[豆瓣电影](https://douban-api-docs.zce.me/) 
+
+||||
+|:--:|:--:|:--:|
+|![img_1.png](https://upload-images.jianshu.io/upload_images/9140378-16404779ba734ec5.png)|![img_2.png](https://upload-images.jianshu.io/upload_images/9140378-722b142b9bd638a3.png)|![img_3.png](https://upload-images.jianshu.io/upload_images/9140378-e738b2d8b52a8fe1.png)|
+|![img_4.png](https://upload-images.jianshu.io/upload_images/9140378-0d98af63887a9773.png)|![img_5.png](https://upload-images.jianshu.io/upload_images/9140378-bed57eb6d200bdda.png)|![img_6.png](https://upload-images.jianshu.io/upload_images/9140378-bc3ab70ca01fb9d0.png)|
+|![img_7.png](https://upload-images.jianshu.io/upload_images/9140378-acdaad1e96cba511.png)|![img_8.png](https://upload-images.jianshu.io/upload_images/9140378-e89f05de093e0b09.png)|![img_9.png](https://upload-images.jianshu.io/upload_images/9140378-5377de849d3db4da.png)|
 
 
 ## 酷欧天气Flutter版
@@ -43,19 +46,24 @@
 [![font__awesome__flutter version](https://img.shields.io/badge/font__awesome__flutter-8.4.0-green.svg)](https://pub.dev/packages/font_awesome_flutter)
 
 
-> 所用数据来源于[和风天气](https://dev.heweather.com/) <br> s参考自第一行代码中酷欧天气请求方式
+> 所用数据来源于[和风天气](https://dev.heweather.com/) <br> 参考自第一行代码中酷欧天气请求方式
 
-|||||
-|:--:|:--:|:--:|:--:|
-|![weather_1.jpg](https://upload-images.jianshu.io/upload_images/9140378-cb27eb6eac80b9c6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|![weather_2.jpg](https://upload-images.jianshu.io/upload_images/9140378-c76719eb3fb9ec5c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|![weather_3.jpg](https://upload-images.jianshu.io/upload_images/9140378-9f54bb816bfa44c5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|![weather_4.jpg](https://upload-images.jianshu.io/upload_images/9140378-a795b2c58915602c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|
-|![weather_7.jpg](https://upload-images.jianshu.io/upload_images/9140378-076f837ed184c86c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|![weather_5.jpg](https://upload-images.jianshu.io/upload_images/9140378-250210ce6685ae52.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|![weather_6.jpg](https://upload-images.jianshu.io/upload_images/9140378-a24a9cdc8c0c8694.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)||
+||||
+|:--:|:--:|:--:|
+|![img_1.png](https://upload-images.jianshu.io/upload_images/9140378-71965eed98e73cff.png)|![img_2.png](https://upload-images.jianshu.io/upload_images/9140378-7e1336f65c2ea37a.png)|![img_3.png](https://upload-images.jianshu.io/upload_images/9140378-c6dd24ca689b44de.png)|
+|![img_4.png](https://upload-images.jianshu.io/upload_images/9140378-74904da34801ed24.png)|![img_5.png](https://upload-images.jianshu.io/upload_images/9140378-5bce1af2807fb48f.png)|![img_6.png](https://upload-images.jianshu.io/upload_images/9140378-c3dfba0c796081e3.png)|
 
 ## 简单单词翻译
 
 [![english__words version](https://img.shields.io/badge/english__words-3.1.3-green.svg)](https://pub.dev/packages/english_words)
 
-|||||
-|:--:|:--:|:--:|:--:|
-|![壳图20190302-223407.jpg](https://upload-images.jianshu.io/upload_images/9140378-4f3eda1358453f67.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|![壳图20190302-223413.jpg](https://upload-images.jianshu.io/upload_images/9140378-d2e5620d1cd37060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|![new](https://upload-images.jianshu.io/upload_images/9140378-3c659ae383abf165.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|![show.png](https://upload-images.jianshu.io/upload_images/9140378-b295a02cdde492bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/240)|
+||||
+|:--:|:--:|:--:|
+|![img_1.png](https://upload-images.jianshu.io/upload_images/9140378-f43fa1d1ee913227.png?)|![img_2.png](https://upload-images.jianshu.io/upload_images/9140378-3fec95d5a9de9154.png)|![img_3.png](https://upload-images.jianshu.io/upload_images/9140378-b606c35ee1efb0cf.png)|
+|![img_4.png](https://upload-images.jianshu.io/upload_images/9140378-a8dc7c5b56a58fb0.png)|![img_5.png](https://upload-images.jianshu.io/upload_images/9140378-b2cb53531690a6c2.png)||
 
+</div align='center'>
 
+![](https://s2.ax1x.com/2020/02/14/1vFKot.png) 
+
+</div>
