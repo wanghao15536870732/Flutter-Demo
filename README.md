@@ -1,8 +1,8 @@
 ## Flutter Practice | Flutter 练习集合
 
-![Flutter version](https://img.shields.io/badge/flutter-1.0.0-orange.svg)
-![Dart version](https://img.shields.io/badge/dart-2.1.0-orange.svg)
-![AndroidStudio version](https://img.shields.io/badge/AndroidStudio-3.1-orange)
+![Flutter version](https://img.shields.io/badge/flutter-1.9.1+hotfix.6-orange.svg)
+![Dart version](https://img.shields.io/badge/dart-2.6.1-orange.svg)
+![AndroidStudio version](https://img.shields.io/badge/AndroidStudio-3.2-orange)
 
 ## 新型肺炎疫情实时动态
 
