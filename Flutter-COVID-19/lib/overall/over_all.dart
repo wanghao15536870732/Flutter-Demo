@@ -2,7 +2,6 @@ class OverAll {
   String virus; //病毒
   String infectSource; //传染源
   String passWay; //传播途径
-
   int currentConfirmedCount; //现存确诊
   int confirmedCount; //累计确诊
   int suspectedCount; //现存疑似
@@ -18,6 +17,7 @@ class OverAll {
   String remark1; //易感人群
   String remark2; //潜伏期
   String remark3; //宿主
+  String imgUrl; //全国统计图
   List<TrendChart> countryTrendChart; //全国 疫情图表
   List<TrendChart> hbFeiHbTrendChart; //湖北/非湖北 疫情图表
   int pubDate; //更新时间
@@ -42,6 +42,7 @@ class OverAll {
     this.remark1,
     this.remark2,
     this.remark3,
+    this.imgUrl,
     this.countryTrendChart,
     this.hbFeiHbTrendChart,
     this.pubDate,
@@ -49,7 +50,6 @@ class OverAll {
   });
 
   factory OverAll.fromJson(Map data) {
-
     return OverAll(
       virus: data['note1'],
       infectSource: data['note2'],
@@ -69,9 +69,10 @@ class OverAll {
       remark1: data['remark1'],
       remark2: data['remark2'],
       remark3: data['remark3'],
+      imgUrl: data['imgUrl'],
       countryTrendChart: TrendChartList.fromJson(data['quanguoTrendChart']).trendChatList,
       hbFeiHbTrendChart: TrendChartList.fromJson(data['hbFeiHbTrendChart']).trendChatList,
-      pubDate: data['updateTime'],
+      pubDate: data['modifyTime'],
       marqueeList: MarqueeList.fromJson(data['marquee']).marqueeList,
     );
   }
@@ -94,6 +95,9 @@ class OverAll {
       remark1: '',
       remark2: '',
       remark3: '',
+      imgUrl: '',
+      countryTrendChart: [],
+      hbFeiHbTrendChart: [],
       pubDate: 0,
       marqueeList: [],
     );
@@ -148,3 +152,4 @@ class TrendChart{
     imgUrl = data['imgUrl'];
   }
 }
+

@@ -21,6 +21,8 @@ class _HomePageState extends State<HomePage> {
   List<Rumor> rumorList = [];
   List<Province> provinceList = [];
   List<Country> countryList = [];
+  List<Recommend> recommendList = [];
+  List<Wiki> wikiList = [];
   OverAll overAll = OverAll.empty();
 
   @override
@@ -46,15 +48,19 @@ class _HomePageState extends State<HomePage> {
   Future requestData() async {
     OverAll overAll = await API.requestOverall();
     List<News> newsList = await API.requestNews(false);
-    List<Rumor> rumorList = await API.requestRumors(false);
+    List<Recommend> recommendList = await API.requestRecommend();
+    List<Rumor> rumorList = await API.requestRumors();
     List<Province> provinceList = await API.requestProvince();
     List<Country> countryList = await API.requestCountry();
+    List<Wiki> wikiList = await API.requestWiki();
     setState(() {
       this.newsList = newsList;
       this.overAll = overAll;
+      this.recommendList = recommendList;
       this.rumorList = rumorList;
       this.provinceList = provinceList;
       this.countryList = countryList;
+      this.wikiList = wikiList;
     });
   }
 
@@ -86,7 +92,8 @@ class _HomePageState extends State<HomePage> {
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext context,int index){
           if(index == 0){
-            return NewsHomePage(newsList: newsList,overAll: overAll);
+            return NewsHomePage(newsList: newsList,overAll: overAll,
+              recommendList: recommendList,wikiList: wikiList,);
           }else if(index == 1){
             return ExpansionPanelPage(provinceList: provinceList,countryList: countryList);
           }else{

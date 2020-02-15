@@ -93,7 +93,7 @@ class _RumorHomePageState extends State<RumorHomePage> {
 
   //下拉刷新
   void _onRefresh() async {
-    this.widget.rumorList = await API.requestRumors(true);
+    this.widget.rumorList = await API.requestRumors();
     _refreshController.refreshCompleted();
   }
 

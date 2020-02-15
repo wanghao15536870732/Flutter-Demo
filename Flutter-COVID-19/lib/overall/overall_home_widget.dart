@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/carousel/carousel.dart';
@@ -215,7 +216,8 @@ class OverAllHomeWidget extends StatelessWidget {
               margin: EdgeInsets.only(top: 5.0,left: 15.0),
               child: Row(
                 children: <Widget>[
-                  Text(title,textAlign: TextAlign.start,style: TextStyle(color: Colors.black,fontSize: 16.0))
+                  Text(title,textAlign: TextAlign.start,
+                      style: TextStyle(color: Colors.black,fontSize: 17.0,fontWeight: FontWeight.bold))
                 ],
               ),
             ),
@@ -224,6 +226,22 @@ class OverAllHomeWidget extends StatelessWidget {
         ),
       );
     }
+
+    Widget _buildMapWidget = AspectRatio(
+      aspectRatio: 1095 / 905,
+      child: Container(
+        margin: EdgeInsets.all(10.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(5.0),
+          child: CachedNetworkImage(
+            fit: BoxFit.fill,
+            imageUrl: overAll.imgUrl,
+            placeholder: (context, url) => CupertinoActivityIndicator(),
+            errorWidget: (context, url, error) => new Icon(Icons.error),
+          ),
+        ),
+      ),
+    );
 
     return Container(
       child: Column(
@@ -234,6 +252,7 @@ class OverAllHomeWidget extends StatelessWidget {
           Container(height: 15.0, color: Colors.grey[200]),
           titleWidget("疫情地图"),
           new Divider(height: 2.0, color: Colors.grey),
+          _buildMapWidget,
           thirdWidget("全国",overAll.countryTrendChart),
           thirdWidget("湖北/非湖北",overAll.hbFeiHbTrendChart),
         ],

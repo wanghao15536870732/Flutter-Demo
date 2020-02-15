@@ -69,3 +69,77 @@ class Rumor{
   }
 }
 
+class RecommendList{
+  List<Recommend> recommendList;
+  RecommendList(this.recommendList);
+  RecommendList.fromJson(List data){
+    recommendList = [];
+    for(var i = 0;i < data.length;i ++){
+      recommendList.add(Recommend.fromJson(data[i]));
+    }
+  }
+}
+
+class Recommend{
+  int createTime;
+  int modifyTime;
+  String title;
+  String imgUrl;
+  String linkUrl;
+  int contentType;
+
+  Recommend({
+    this.createTime,
+    this.modifyTime,
+    this.title,
+    this.imgUrl,
+    this.linkUrl,
+    this.contentType,
+  });
+
+  factory Recommend.fromJson(Map data){
+    return Recommend(
+      createTime: data['createTime'],
+      modifyTime: data['modifyTime'],
+      title: data['title'],
+      imgUrl: data['imgUrl'],
+      linkUrl: data['linkUrl'],
+      contentType: data['contentType'],
+    );
+  }
+}
+
+class WikiList{
+  List<Wiki> wikiList;
+  WikiList(this.wikiList);
+  WikiList.fromJson(List data){
+    wikiList = [];
+    for(var i = 0;i < data.length;i ++){
+      wikiList.add(Wiki.fromJson(data[i]));
+    }
+  }
+}
+
+class Wiki{
+  String title;
+  String imgUrl;
+  String linkUrl;
+  String description;
+
+  Wiki({
+    this.title,
+    this.imgUrl,
+    this.linkUrl,
+    this.description,
+  });
+
+  factory Wiki.fromJson(Map data){
+    return Wiki(
+      title: data['title'],
+      imgUrl: data['imgUrl'],
+      linkUrl: data['linkUrl'],
+      description: data['description'],
+    );
+  }
+}
+
