@@ -15,7 +15,7 @@
 [![cached__network__image version](https://img.shields.io/badge/cached__network__image-1.1.3-brightgreen)](https://pub.dev/packages/cached_network_image)
 [![pull__to__refresh version](https://img.shields.io/badge/pull__to__refresh-1.5.8-brightgreen)](https://pub.dev/packages/pull_to_refresh)
 
-> 数据来源于[DXY-COVID-19-Crawler](https://github.com/BlankerL/DXY-COVID-19-Crawler) 
+> 数据来源于[DXY-COVID-19-Crawler](https://github.com/BlankerL/DXY-COVID-19-Crawler) and [spread-information](https://github.com/programmerauthor/spread-information)
 
 
 ### 总体图：
