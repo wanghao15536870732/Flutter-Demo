@@ -1,6 +1,10 @@
 ## Flutter Practice | Flutter 练习集合
 
-<img src="https://img.icons8.com/bubbles/100/000000/touchscreen-smartphone.png">
+<img src="https://img.icons8.com/bubbles/300/000000/touchscreen-smartphone.png" width="100">
+<img src="https://img.icons8.com/bubbles/300/000000/medical-doctor.png" width="100">
+<img src="https://img.icons8.com/bubbles/300/000000/clapperboard.png" width="100">
+<img src="https://img.icons8.com/bubbles/300/000000/clouds.png" width="100">
+<img src="https://img.icons8.com/bubbles/300/000000/ms-word.png" width="100">
 
 ![Flutter version](https://img.shields.io/badge/flutter-1.9.1+hotfix.6-orange.svg)
 ![Dart version](https://img.shields.io/badge/dart-2.6.1-orange.svg)
@@ -66,8 +70,8 @@
 
 [![english__words version](https://img.shields.io/badge/english__words-3.1.3-green.svg)](https://pub.dev/packages/english_words)
 
-||||
-|:--:|:--:|:--:|
+|||||
+|:--:|:--:|:--:|:--:|
 |![img_1.png](https://upload-images.jianshu.io/upload_images/9140378-f43fa1d1ee913227.png?)|![img_2.png](https://upload-images.jianshu.io/upload_images/9140378-3fec95d5a9de9154.png)|![img_3.png](https://upload-images.jianshu.io/upload_images/9140378-b606c35ee1efb0cf.png)|![img_4.png](https://upload-images.jianshu.io/upload_images/9140378-a8dc7c5b56a58fb0.png)|
 |![img_5.png](https://upload-images.jianshu.io/upload_images/9140378-b2cb53531690a6c2.png)|
 
