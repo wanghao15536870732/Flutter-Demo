@@ -1,10 +1,6 @@
 ## Flutter Practice | Flutter 练习集合
 
-<img src="https://img.icons8.com/bubbles/300/000000/touchscreen-smartphone.png" width="100">
-<img src="https://img.icons8.com/bubbles/300/000000/medical-doctor.png" width="100">
-<img src="https://img.icons8.com/bubbles/300/000000/clapperboard.png" width="100">
-<img src="https://img.icons8.com/bubbles/300/000000/clouds.png" width="100">
-<img src="https://img.icons8.com/bubbles/300/000000/ms-word.png" width="100">
+<img src="https://img.icons8.com/bubbles/300/000000/touchscreen-smartphone.png" width="100"><img src="https://img.icons8.com/bubbles/300/000000/medical-doctor.png" width="100"><img src="https://img.icons8.com/bubbles/300/000000/clapperboard.png" width="100"><img src="https://img.icons8.com/bubbles/300/000000/clouds.png" width="100"><img src="https://img.icons8.com/bubbles/300/000000/ms-word.png" width="100">
 
 ![Flutter version](https://img.shields.io/badge/flutter-1.9.1+hotfix.6-orange.svg)
 ![Dart version](https://img.shields.io/badge/dart-2.6.1-orange.svg)
