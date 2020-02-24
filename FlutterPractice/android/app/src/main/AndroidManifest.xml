@@ -18,7 +18,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="库欧天气"
+        android:label="Flutter 练习合辑"
         android:icon="@mipmap/logo"
         tools:ignore="GoogleAppIndexingWarning">
         <activity

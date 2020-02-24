@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_app/news/news.dart';
 import 'package:flutter_app/overall/over_all.dart';
 import 'package:flutter_app/provinces/country.dart';
@@ -17,6 +16,7 @@ class API{
   static String allNewsUrl = newsUrl + "?num=20";
 
   static String areaUrl = "https://api.yimian.xyz/coro";  //地区
+  static String citiesUrl = "https://lab.ahusmart.com/nCoV/api/provinceName";
 
   //整体统计信息
   static Future<OverAll> requestOverall() async{
@@ -79,5 +79,14 @@ class API{
     List<dynamic> areaData = json.decode(utf8decoder.convert(areaResponse.bodyBytes));
     List<Country> countryDataList = CountryList.fromJson(areaData).countryList;
     return countryDataList;
+  }
+
+  //全球地区
+  static Future<List<String>> requestCity() async{
+    final citiesResponse = await http.get(citiesUrl);
+    Utf8Decoder utf8decoder = new Utf8Decoder();
+    Map<String,dynamic> citiesData = json.decode(utf8decoder.convert(citiesResponse.bodyBytes));
+    List<String> citiesDataList = citiesData['results'];
+    return citiesDataList;
   }
 }

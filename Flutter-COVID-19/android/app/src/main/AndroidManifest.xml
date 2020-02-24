@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <!--用于进行网络定位-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
     <!--用于读取手机当前的状态-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <!--写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据-->
@@ -18,9 +17,10 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="注册测试"
+        android:label="新型肺炎实时动态"
         android:icon="@mipmap/logo"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

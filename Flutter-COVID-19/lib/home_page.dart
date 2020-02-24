@@ -6,6 +6,7 @@ import 'package:flutter_app/overall/over_all.dart';
 import 'package:flutter_app/provinces/country.dart';
 import 'package:flutter_app/provinces/state_province_widget.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'carousel/SearchDelegate.dart';
 import 'news/news_home_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -82,7 +83,7 @@ class _HomePageState extends State<HomePage> {
         title: new Text("全国新型肺炎疫情实时动态"),
         actions: <Widget>[
           IconButton(icon:  Icon(Icons.search,color: Colors.white), onPressed: (){
-
+            showSearch(context: context, delegate: SearchBarDelegate(this.provinceList));
           }),
         ],
       ),
