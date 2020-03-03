@@ -89,12 +89,12 @@ class _ExpansionPanelPageState extends State<ExpansionPanelPage> {
           _buildCityItem(item.cityName),
           _buildCityItem(item.currentConfirmedCount > 0
               ? item.currentConfirmedCount.toString()
-              : "无"),
+              : "0"),
           _buildCityItem(
-              item.confirmedCount > 0 ? item.confirmedCount.toString() : "无"),
-          _buildCityItem(item.deadCount > 0 ? item.deadCount.toString() : "无"),
+              item.confirmedCount > 0 ? item.confirmedCount.toString() : "0"),
+          _buildCityItem(item.deadCount > 0 ? item.deadCount.toString() : "0"),
           _buildCityItem(
-              item.curedCount > 0 ? item.curedCount.toString() : "无"),
+              item.curedCount > 0 ? item.curedCount.toString() : "0"),
         ],
       ),
     );
@@ -144,12 +144,12 @@ class _ExpansionPanelPageState extends State<ExpansionPanelPage> {
           _buildCityItem(country.provinceName),
           _buildCityItem(country.currentConfirmedCount > 0
               ? country.currentConfirmedCount.toString()
-              : ""),
+              : "0"),
           _buildCityItem(
-              country.confirmedCount > 0 ? country.confirmedCount.toString() : ""),
-          _buildCityItem(country.deadCount > 0 ? country.deadCount.toString() : ""),
+              country.confirmedCount > 0 ? country.confirmedCount.toString() : "0"),
+          _buildCityItem(country.deadCount > 0 ? country.deadCount.toString() : "0"),
           _buildCityItem(
-              country.curedCount > 0 ? country.curedCount.toString() : ""),
+              country.curedCount > 0 ? country.curedCount.toString() : "0"),
         ],
       ),
     );

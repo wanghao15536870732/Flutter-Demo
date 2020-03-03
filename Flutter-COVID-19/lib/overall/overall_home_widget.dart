@@ -243,6 +243,24 @@ class OverAllHomeWidget extends StatelessWidget {
       ),
     );
 
+    Widget foreignWidget = Container(
+      child:Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          itemWidget(overAll.statistics.confirmedCount.toString(),
+            overAll.statistics.confirmedIncr, "累计确诊", Colors.red,),
+          itemWidget(overAll.statistics.currentConfirmedCount.toString(),
+            overAll.statistics.currentConfirmedIncr, "现存确诊", Colors.orange),
+          itemWidget(overAll.statistics.deadCount.toString(), overAll.statistics.deadIncr,
+            "死亡人数", Colors.black54),
+          itemWidget(overAll.statistics.curedCount.toString(), overAll.statistics.curedIncr,
+            "治愈人数", Colors.green),
+        ],
+      ),
+    );
+
+
     return Container(
       child: Column(
         children: <Widget>[
@@ -255,6 +273,9 @@ class OverAllHomeWidget extends StatelessWidget {
           _buildMapWidget,
           thirdWidget("全国",overAll.countryTrendChart),
           thirdWidget("湖北/非湖北",overAll.hbFeiHbTrendChart),
+          foreignWidget,
+          thirdWidget("国外疫情趋势",overAll.foreignTrendChart),
+          thirdWidget("重点国家疫情趋势",overAll.importantForeignTrendChart),
         ],
       ),
     );

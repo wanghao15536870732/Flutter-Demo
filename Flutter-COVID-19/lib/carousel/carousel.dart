@@ -79,35 +79,44 @@ class _State extends State<Carousel> {
           ),
           Container(
             margin: EdgeInsets.only(left: 15.0,right: 15.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: GridView(
+              shrinkWrap: true,
+              padding: EdgeInsets.symmetric(vertical: 0),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 5,
+                mainAxisSpacing: 5,
+                crossAxisSpacing: 5,
+                childAspectRatio: 1.35,
+              ),
               children: _labels.asMap().map((i,v) => MapEntry(i,
-                  GestureDetector(
-                    child: Container(width: _images.length > 4 ? 70.0 : 90.0,height: 45.0,
-                        decoration: BoxDecoration(
-                          color: _currentIndex == i ? Colors.blue[100] : Colors.grey[200],
-                        ),
-                        child: Center(
-                          child: Text(
-                              _labels[i],
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: _currentIndex == i ? Colors.blueAccent : Colors.grey[600],
-                                fontSize: 13.0,
-                              )
-                          ),
-                        )
+                GestureDetector(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: _currentIndex == i ? Colors.blue[100] : Colors.grey[200],
                     ),
-                    onTap: (){
-                      setState(() {
-                        _currentIndex = i;
-                        _pageController.jumpToPage(_currentIndex);
-                      });
-                    },
-                  )
+                    child: Container(
+                      margin: EdgeInsets.all(5.0),
+                      child: Center(
+                        child: Text(
+                          _labels[i],
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: _currentIndex == i ? Colors.blueAccent : Colors.grey[800],
+                            fontSize: 14.0,
+                          )
+                        ),
+                      ),
+                    )
+                  ),
+                  onTap: (){
+                    setState(() {
+                      _currentIndex = i;
+                      _pageController.jumpToPage(_currentIndex);
+                    });
+                  },
+                )
               )).values.toList(),
-            ),
+            )
           )
         ],
       );

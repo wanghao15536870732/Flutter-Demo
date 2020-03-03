@@ -10,7 +10,7 @@ class OverAll {
   int deadCount; //死亡人数
   int currentConfirmedIncr; //较昨日新增现存确诊
   int confirmedIncr; //较昨日新增确诊病例
-  int suspectedIncr;  //较昨日新增疑似病例
+  int suspectedIncr; //较昨日新增疑似病例
   int seriousIncr; //较昨日新增重症病例
   int curedIncr; //较昨日新增治愈人数
   int deadIncr; //较昨日新增死亡人数
@@ -20,8 +20,11 @@ class OverAll {
   String imgUrl; //全国统计图
   List<TrendChart> countryTrendChart; //全国 疫情图表
   List<TrendChart> hbFeiHbTrendChart; //湖北/非湖北 疫情图表
+  List<TrendChart> foreignTrendChart; //国内国外 疫情图表
+  List<TrendChart> importantForeignTrendChart; //疫情严重国家 疫情图表
   int pubDate; //更新时间
   List<Marquee> marqueeList;
+  ForeignStatistics statistics;
 
   OverAll({
     this.virus,
@@ -45,8 +48,11 @@ class OverAll {
     this.imgUrl,
     this.countryTrendChart,
     this.hbFeiHbTrendChart,
+    this.foreignTrendChart,
+    this.importantForeignTrendChart,
     this.pubDate,
     this.marqueeList,
+    this.statistics,
   });
 
   factory OverAll.fromJson(Map data) {
@@ -70,10 +76,24 @@ class OverAll {
       remark2: data['remark2'],
       remark3: data['remark3'],
       imgUrl: data['imgUrl'],
-      countryTrendChart: TrendChartList.fromJson(data['quanguoTrendChart']).trendChatList,
-      hbFeiHbTrendChart: TrendChartList.fromJson(data['hbFeiHbTrendChart']).trendChatList,
+      countryTrendChart: TrendChartList
+        .fromJson(data['quanguoTrendChart'])
+        .trendChatList,
+      hbFeiHbTrendChart: TrendChartList
+        .fromJson(data['hbFeiHbTrendChart'])
+        .trendChatList,
+      foreignTrendChart: TrendChartList
+        .fromJson(data['foreignTrendChart'])
+        .trendChatList,
+      importantForeignTrendChart: TrendChartList
+        .fromJson(data['importantForeignTrendChart'])
+        .trendChatList,
       pubDate: data['modifyTime'],
-      marqueeList: MarqueeList.fromJson(data['marquee']).marqueeList,
+      marqueeList: MarqueeList
+        .fromJson(data['marquee'])
+        .marqueeList,
+      statistics: ForeignStatistics
+        .fromJson(data['foreignStatistics']),
     );
   }
 
@@ -98,30 +118,68 @@ class OverAll {
       imgUrl: '',
       countryTrendChart: [],
       hbFeiHbTrendChart: [],
+      foreignTrendChart: [],
+      importantForeignTrendChart: [],
       pubDate: 0,
       marqueeList: [],
     );
   }
 }
 
-class MarqueeList{
+class ForeignStatistics {
+  int currentConfirmedCount; //现存确诊
+  int confirmedCount; //累计确诊
+  int curedCount; //治愈人数
+  int deadCount; //死亡人数
+  int currentConfirmedIncr; //较昨日新增现存确诊
+  int confirmedIncr; //较昨日新增确诊病例
+  int curedIncr; //较昨日新增治愈人数
+  int deadIncr; //较昨日新增死亡人数
+  ForeignStatistics({
+    this.currentConfirmedCount,
+    this.confirmedCount,
+    this.curedCount,
+    this.deadCount,
+    this.currentConfirmedIncr,
+    this.confirmedIncr,
+    this.curedIncr,
+    this.deadIncr,
+  });
+
+  factory ForeignStatistics.fromJson(Map data){
+    return ForeignStatistics(
+      currentConfirmedCount: data['currentConfirmedCount'],
+      confirmedCount: data['confirmedCount'],
+      curedCount: data['curedCount'],
+      deadCount: data['deadCount'],
+      currentConfirmedIncr: data['currentConfirmedIncr'],
+      confirmedIncr: data['confirmedIncr'],
+      curedIncr: data['curedIncr'],
+      deadIncr: data['deadIncr'],
+    );
+  }
+}
+
+class MarqueeList {
   List<Marquee> marqueeList;
+
   MarqueeList(this.marqueeList);
+
   MarqueeList.fromJson(List data) {
     marqueeList = [];
-    for(var i = 0;i < data.length;i ++){
+    for (var i = 0; i < data.length; i ++) {
       marqueeList.add(Marquee.fromJson(data[i]));
     }
   }
 }
 
-class Marquee{
+class Marquee {
   int id;
   String marqueeLabel;
   String marqueeContent;
   String marqueeLink;
 
-  Marquee(this.id,this.marqueeLabel,this.marqueeContent,this.marqueeLink);
+  Marquee(this.id, this.marqueeLabel, this.marqueeContent, this.marqueeLink);
 
   Marquee.fromJson(Map data) {
     id = data['id'];
@@ -131,21 +189,24 @@ class Marquee{
   }
 }
 
-class TrendChartList{
+class TrendChartList {
   List<TrendChart> trendChatList;
+
   TrendChartList(this.trendChatList);
+
   TrendChartList.fromJson(List data){
     trendChatList = [];
-    for(var i = 0;i < data.length;i ++){
+    for (var i = 0; i < data.length; i ++) {
       trendChatList.add(TrendChart.fromJson(data[i]));
     }
   }
 }
 
-class TrendChart{
+class TrendChart {
   String title;
   String imgUrl;
-  TrendChart(this.title,this.imgUrl);
+
+  TrendChart(this.title, this.imgUrl);
 
   TrendChart.fromJson(Map data){
     title = data['title'];
